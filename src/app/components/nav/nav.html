@@ -1,0 +1,8 @@
+<div layout="row" layout-align="end center">
+    <md-button class="md-primary" ui-sref="aboutus" ng-if="!$ctrl.authService.isLoggedIn()">About us</md-button>
+    <md-button class="md-primary" ui-sref="login" ng-if="!$ctrl.authService.isLoggedIn()">Login</md-button>
+    <md-button class="md-primary" ui-sref="register" ng-if="!$ctrl.authService.isLoggedIn()">Register</md-button>
+    <span ng-if="$ctrl.authService.isLoggedIn()">{{$ctrl.userInfo.user.userId}}</span>
+    <md-button class="md-primary" ng-click="$ctrl.getUser()" ng-if="$ctrl.authService.isLoggedIn()" ui-sref="editprofile">Edit Profile</md-button>
+    <md-button class="md-primary" ng-if="$ctrl.authService.isLoggedIn()" ng-click="$ctrl.logout()">Logout</md-button>
+</div>

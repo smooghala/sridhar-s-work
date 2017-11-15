@@ -1,0 +1,169 @@
+<md-content layout-padding="20">
+  <form name="userProfileForm" novalidate layout="column">
+    <div flex layout="row" layout-align="center start">
+      <md-card flex-gt-xs="33">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">EDIT PROFILE</span>
+          </md-card-title-text>
+          <md-divider></md-divider>
+        </md-card-title>
+        <md-card-content>
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm="">
+              <label>First name</label>
+              <input ng-model="$ctrl.user.firstName" name="fName" required>
+              <div ng-messages="userProfileForm.fName.$error" role="alert">
+                <div ng-message-exp="['required']">
+                  First name is must.
+                </div>
+              </div>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm="">
+              <label>Last Name</label>
+              <input ng-model="$ctrl.user.lastName" name="lname" required>
+              <div ng-messages="userProfileForm.lname.$error" role="alert">
+                <div ng-message-exp="['required']">
+                  Last name is must.
+                </div>
+              </div>
+            </md-input-container>
+          </div>
+          <md-input-container class="md-block">
+            <label>Email</label>
+            <input ng-model="$ctrl.user.emailId" name="email" type="email" minlength="10" maxlength="100" ng-pattern="/^.+@.+\..+$/"
+               ng-disabled=true>
+          </md-input-container>
+          <md-input-container class="md-block">
+            <label>Address 1</label>
+            <input ng-model="$ctrl.user.line1" name="address" required>
+            <div ng-messages="userProfileForm.address.$error" role="alert">
+              <div ng-message-exp="['required']">
+                Address 1 is must.
+              </div>
+            </div>
+          </md-input-container>
+
+          <md-input-container md-no-float="" class="md-block">
+            <label>Address 2</label>
+            <input ng-model="$ctrl.user.line2" name="address2" required>
+            <div ng-messages="userProfileForm.address2.$error" role="alert">
+              <div ng-message-exp="['required']">
+                Address 2 is must.
+              </div>
+            </div>
+          </md-input-container>
+
+          <div layout-gt-sm="row">
+            <md-input-container class="md-block" flex-gt-sm="">
+              <label>City</label>
+              <input ng-model="$ctrl.user.city" name="city" required>
+              <div ng-messages="userProfileForm.city.$error" role="alert">
+                <div ng-message-exp="['required']">
+                  City is must.
+                </div>
+              </div>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm="">
+              <label>State</label>
+              <md-select ng-model="$ctrl.user.state" name="state" required>
+                <md-option value="AL">Alabama</md-option>
+                <md-option value="AK">Alaska</md-option>
+                <md-option value="AZ">Arizona</md-option>
+                <md-option value="AR">Arkansas</md-option>
+                <md-option value="CA">California</md-option>
+                <md-option value="CO">Colorado</md-option>
+                <md-option value="CT">Connecticut</md-option>
+                <md-option value="DE">Delaware</md-option>
+                <md-option value="DC">District Of Columbia</md-option>
+                <md-option value="FL">Florida</md-option>
+                <md-option value="GA">Georgia</md-option>
+                <md-option value="HI">Hawaii</md-option>
+                <md-option value="ID">Idaho</md-option>
+                <md-option value="IL">Illinois</md-option>
+                <md-option value="IN">Indiana</md-option>
+                <md-option value="IA">Iowa</md-option>
+                <md-option value="KS">Kansas</md-option>
+                <md-option value="KY">Kentucky</md-option>
+                <md-option value="LA">Louisiana</md-option>
+                <md-option value="ME">Maine</md-option>
+                <md-option value="MD">Maryland</md-option>
+                <md-option value="MA">Massachusetts</md-option>
+                <md-option value="MI">Michigan</md-option>
+                <md-option value="MN">Minnesota</md-option>
+                <md-option value="MS">Mississippi</md-option>
+                <md-option value="MO">Missouri</md-option>
+                <md-option value="MT">Montana</md-option>
+                <md-option value="NE">Nebraska</md-option>
+                <md-option value="NV">Nevada</md-option>
+                <md-option value="NH">New Hampshire</md-option>
+                <md-option value="NJ">New Jersey</md-option>
+                <md-option value="NM">New Mexico</md-option>
+                <md-option value="NY">New York</md-option>
+                <md-option value="NC">North Carolina</md-option>
+                <md-option value="ND">North Dakota</md-option>
+                <md-option value="OH">Ohio</md-option>
+                <md-option value="OK">Oklahoma</md-option>
+                <md-option value="OR">Oregon</md-option>
+                <md-option value="PA">Pennsylvania</md-option>
+                <md-option value="RI">Rhode Island</md-option>
+                <md-option value="SC">South Carolina</md-option>
+                <md-option value="SD">South Dakota</md-option>
+                <md-option value="TN">Tennessee</md-option>
+                <md-option value="TX">Texas</md-option>
+                <md-option value="UT">Utah</md-option>
+                <md-option value="VT">Vermont</md-option>
+                <md-option value="VA">Virginia</md-option>
+                <md-option value="WA">Washington</md-option>
+                <md-option value="WV">West Virginia</md-option>
+                <md-option value="WI">Wisconsin</md-option>
+                <md-option value="WY">Wyoming</md-option>
+              </md-select>
+              <div ng-messages="userProfileForm.state.$error" role="alert">
+                <div ng-message-exp="['required']">
+                  State is must.
+                </div>
+              </div>
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm="">
+              <label>Postal Code</label>
+              <input ng-model="$ctrl.user.zipcode" name="postalCode" ng-pattern="/^[0-9]{5}$/" md-maxlength="5" required>
+              <div ng-messages="userProfileForm.postalCode.$error" role="alert">
+                <div ng-message-exp="['required','pattern']">
+                  Postal code must be valid.
+                </div>
+              </div>
+            </md-input-container>
+          </div>
+
+          <md-input-container class="md-block">
+            <label>Phone Number</label>
+            <input name="phNumber" ng-model="$ctrl.user.phoneNumber" md-maxlength="10" ng-pattern="/^[0-9]{10}$/" required>
+            <div ng-messages="userProfileForm.phNumber.$error" role="alert">
+              <div ng-message-exp="['required','pattern']">
+                Phone number must be valid.
+              </div>
+            </div>
+          </md-input-container>
+
+          <md-input-container class="md-block">
+            <label>Fax Number</label>
+            <input name="faxNumber" ng-model="$ctrl.user.faxNumber" md-maxlength="10" ng-pattern="/^[0-9]{10}$/" required>
+            <div ng-messages="userProfileForm.faxNumber.$error" role="alert">
+              <div ng-message-exp="['required','pattern']">
+                Fax number must be valid.
+              </div>
+            </div>
+          </md-input-container>
+        </md-card-content>
+        <md-card-actions layout="row" layout-align="end space-between end">
+          <md-button ui-sref="home" class="md-primary">Cancel</md-button>
+          <md-button class="md-raised md-primary" ng-click="$ctrl.editProfile()" ng-disabled="userProfileForm.$invalid">Submit</md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+  </form>
+</md-content>

@@ -1,0 +1,83 @@
+<md-content layout-padding="20">
+  <form name="userSearchForm" novalidate layout="column">
+    <div flex layout="row" layout-align="center start">
+      <md-card flex-gt-xs="33">
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Search</span>
+          </md-card-title-text>
+          <md-divider></md-divider>
+        </md-card-title>
+        <md-card-content>
+           <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Start Date</label>
+           <md-datepicker ng-model="$ctrl.searchParam.startdate" md-placeholder="Enter Start Date" uib-datepicker-popup="MM/dd/yyyy" name="startDate" required></md-datepicker>
+          <div ng-messages="userSearchForm.startDate.$error" role="alert">
+              <div ng-message-exp="['required']">
+                Start date is must.
+              </div>
+            </div>
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>End Date</label>
+           <md-datepicker ng-model="$ctrl.searchParam.enddate" md-placeholder="Enter End Date" name="endDate" required></md-datepicker>
+             <div ng-messages="userSearchForm.endDate.$error" role="alert">
+              <div ng-message-exp="['required']">
+               End date is must.
+              </div>
+            </div>
+          </md-input-container>
+         
+           </div>
+        
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Starting Zipcode</label>
+           <input ng-model="$ctrl.searchParam.startLocation" name="startLoc" ng-pattern="/^[0-9]{5}$/" md-maxlength="5" required> 
+           <div ng-messages="userSearchForm.startLoc.$error" role="alert">
+              <div ng-message-exp="['required','pattern']">
+               Please enter valid Zipcode.
+              </div>
+            </div>
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Ending Zipcode</label>
+           <input ng-model="$ctrl.searchParam.endLocation" name="endLoc" ng-pattern="/^[0-9]{5}$/" md-maxlength="5" required>
+           <div ng-messages="userSearchForm.endLoc.$error" role="alert">
+              <div ng-message-exp="['required','pattern']">
+               Please enter valid Zipcode.
+              </div>
+            </div>
+          </md-input-container>
+        </div>
+
+         <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Carrier Type</label>
+           <md-select name="carrierType" ng-model="$ctrl.searchParam.carrierType">
+						  <md-option ng-repeat="field in $ctrl.carrierType.fields" value="{{field.carrierType}}">
+							{{field.carrierType}}
+						  </md-option>
+						</md-select> 
+          </md-input-container>
+
+          <md-input-container class="md-block" flex-gt-sm="">
+            <label>Commodity Type</label>
+            <md-select name="commodityType" ng-model="$ctrl.searchParam.commodityType">
+						  <md-option ng-repeat="commodityField in $ctrl.commodityType.commodityFields" value="{{commodityField.commodityType}}">
+							{{commodityField.commodityType}}
+						  </md-option>
+						</md-select> 
+          </md-input-container>
+ </md-card-content>
+        <md-card-actions layout="row" layout-align="end space-between end">
+          <md-button ui-sref="home" class="md-primary">Cancel</md-button>
+          <md-button class="md-raised md-primary" ng-click="$ctrl.searchPage()" ng-disabled="userSearchForm.$invalid">Search</md-button>
+        </md-card-actions>
+      </md-card>
+    </div>
+  </form>
+</md-content>

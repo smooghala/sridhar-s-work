@@ -1,0 +1,11 @@
+{
+    "StoreKey": "__vaiztrux__",
+    "BaseUrl": "http://vaizvatruxsl-526959326.us-east-1.elb.amazonaws.com:8280/",
+    "AuthApi": "userManagement/login",
+    "createUser":"userManagement/createuser",
+    "search":"search/serviceProviders",
+    "editUser":"userManagement/updateUser",
+    "getUser" :"userManagement/getUser",
+    "sendRFQ" :"quotation/sendRFQ"
+
+}

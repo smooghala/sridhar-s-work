@@ -1,0 +1,42 @@
+<md-content layout-padding="20">
+  <md-table-container>
+    <table md-table md-row-select="$ctrl.options.rowSelection" multiple="{{$ctrl.options.multiSelect}}" ng-model="$ctrl.selected"
+      md-progress="$ctrl.promise" >
+      <thead md-head md-order="$ctrl.query.order">
+        <tr md-row>
+          <th md-column md-order-by="companyName"><span>DOT Number</span></th>
+          <th md-column md-order-by="noOftrucks"><span>Carrier Name</span></th>
+          <th md-column md-numeric md-order-by="noOfDrivers"><span>Physical Address</span></th>
+          <th md-column md-numeric md-order-by="noOfDrivers"><span>Mailing Address</span></th>
+          <th md-column md-numeric md-order-by="safteyRating"><span>Telephone</span></th>
+          <th md-column md-order-by="insuranceCoverage"><span>Fax</span></th>
+          <th md-column md-order-by="insuranceCoverage"><span>Email Addresss</span></th>
+          <th md-column md-order-by="insuranceCoverage"><span>Total Number od Inspections by FMCSA</span></th>
+          <th md-column md-order-by="insuranceCoverage"><span>Total out of Service Violations</span></th>
+
+        </tr>
+      </thead>
+      <tbody md-body>
+        <tr md-row md-select="company" md-auto-select="$ctrl.options.autoSelect" ng-repeat="company in $ctrl.searchResult">
+          <td md-cell>{{company.dOTNo}}</td>
+          <td md-cell>{{company.carrierName}}</span>
+          </td>
+          <td md-cell>{{company.physicalAddress.zipcode}}</td>
+          <td md-cell>{{company.mailingAddress.zipcode}}</td>
+          <td md-cell>{{company.phone}}</td>
+          <td md-cell>{{company.fax}}</td>
+          <td md-cell>{{company.email}}</td>
+          <td md-cell>{{company.fMCAInspectionCount}}</td>
+          <td md-cell>{{company.serviceViolationCount}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </md-table-container>
+  <md-table-pagination md-limit="$ctrl.query.limit" md-limit-options="[10, 20, 30]" md-page="$ctrl.query.page" md-on-paginate="$ctrl.paginate" 
+  md-total="{{$ctrl.searchResult[0].totalRecords}}"  md-page-select="options.pageSelector"></md-table-pagination>
+  <md-card-actions layout="row" layout-align="end space-between end">
+    <md-button ui-sref="home" class="md-primary">Cancel</md-button>
+    <md-button class="md-raised md-primary" ng-click="$ctrl.sendRFQ()">Send RFQ</md-button>
+  </md-card-actions>
+
+</md-content>

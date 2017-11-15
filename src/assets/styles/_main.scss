@@ -1,0 +1,55 @@
+.banner{
+  background: url(/assets/images/banner.jpg);
+  background-size: cover;
+  background-position: bottom;
+  height: 200px;
+  width:100%;
+}
+
+md-card{
+  md-card-title{
+    background: #01579B;
+    color: white;
+  }
+  md-card-title + md-card-content{
+    padding:20px;
+  }
+  md-card-actions{
+    padding: 0 20px 20px 20px;
+  }
+}
+
+
+.inputdemoErrors .inputErrorsApp {
+  min-height: 48px; }
+
+.inputdemoErrors md-input-container > p {
+  font-size: 0.8em;
+  text-align: left;
+  width: 100%; }
+
+
+md-toast.md-success-toast-theme {
+    background-color: green;
+}
+
+md-toast.md-error-toast-theme {
+    background-color: maroon;
+    position: 'top right'
+}
+
+md-toast {
+    height: 40px;
+    width: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0; right: 0;
+    top:10px;
+}
+
+.homeimage {
+  background-size: cover;
+  background-position: bottom;
+  height: 200px;
+  width: 100%;
+}
