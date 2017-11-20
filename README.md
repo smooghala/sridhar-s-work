@@ -29,7 +29,7 @@ gulp build
 
 **Troubleshooting**
 
-If the `npm install` command hangs or times out, you may need to set your proxy settings for `npm`. See this Confluence page for instructions: 
+If the `npm install` command hangs or times out, you may need to set your proxy settings for `npm`
 $ npm config set proxy http://<username>:<password>@<proxy-server-url>:<port>
 $ npm config set https-proxy http://<username>:<password>@<proxy-server-url>:<port>
 
