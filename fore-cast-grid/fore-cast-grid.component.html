@@ -1,0 +1,833 @@
+<div class="row" style="margin-top: 2px;">
+	<div class="col-md-12">
+		<ul class="nav nav-tabs text-center">
+
+
+			<li class="active pull-left">
+				<a href="#nav-pills-tab-2" data-toggle="tab">
+					<i class="fa fa-bar-chart awesomeiConSize" aria-hidden="true"></i> Forecast Adjustmen</a>
+			</li>
+
+
+		</ul>
+
+
+
+		<div class="tab-content">
+
+
+			<div class="tab-pane fade active in" id="nav-pills-tab-2">
+
+				<app-forcast-filter-nav [lFilterData]="lForecastFilter" *ngIf="lForecastFilter.showTopNav"></app-forcast-filter-nav>
+				<div class="wrapper">
+
+					<nav id="sidebar" class="{{toggleActive}}">
+						<form #filterForm="ngForm">
+
+							<div class="row">
+								<div class="col-md-12" style="">
+									<div class="panel panel-primary">
+										<div class="panel-heading">
+											<span style="font-size: 13px;font-weight: bold;">Filters </span>
+											<span _ngcontent-c2="" class="pull-right" style="margin-top: -8px;margin-right: -14px;">
+												<button class="btn btn-primary" id="sidebarCollapse" (click)="sideToggle('btn')">
+													<i class="{{toggleArrow}}" aria-hidden="true"></i>
+												</button>
+
+											</span>
+										</div>
+										<div *ngIf="toggleActive=='active'" class="panel-body" style="height: 100%;">
+											<div>
+												<span _ngcontent-c2="" id="rotate" class="pull-right">
+													<h3 style="font-size: 17px;">Filter </h3>
+												</span>
+											</div>
+										</div>
+										<div *ngIf="toggleActive!='active'" class="panel-body" style="height: 100%">
+
+											<!-- <div class="col-md-12">
+												<div class="dropdown">
+													<button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="true">
+														My Filters
+														<span class="caret"></span>
+													</button>
+													<div class="dropdown-backdrop"></div>
+													<ul class="dropdown-menu">
+														<li>
+															<a (click)="PrefModal('load')" data-toggle="modal" data-target="#prefModal">Save Preference</a>
+														</li>
+														<li>
+															<a (click)="PrefModal('show')" data-toggle="modal" data-target="#prefModal">Load Preference</a>
+														</li>
+													</ul>
+												</div>
+											</div> -->
+											<div>
+											<app-scenario-drop-down [lFilterData]="lForecastFilter" [lScenarioData]="scenario.result"></app-scenario-drop-down>
+
+
+
+											
+<!-- <div>
+	<label for="name" class="control-label">Sample Tree View
+	</label>
+	<app-tree-view></app-tree-view>
+</div> -->
+											<div class="form-group col-xs-12 col-md-12">
+												<label for="name" class="control-label">Model Output Adjustment
+												</label>
+
+												<br>
+												<div class="search-wrapper">
+													<p-autoComplete [(ngModel)]="lForecastFilter.modelop" [ngModelOptions]="{standalone: true}" [suggestions]="lSearchResultsModelOp"
+													 field="label" (onSelect)="setSelected_Type($event,'modelop')" (completeMethod)="filterSingle_Type($event,'modelop')"
+													 [size]="45" [minLength]="1" placeholder="Select Model Output Adjustment" [dropdown]="true" (onDropdownClick)="onChange_Type($event,'modelop')"></p-autoComplete>
+
+
+													<button class="close-icon-type" (click)="eraseMe_Type('modelop')"></button>
+
+												</div>
+												<!-- <select [(ngModel)]="lForecastFilter.modelop.key" [ngModelOptions]="{standalone: true}" class="form-control custompicker"
+														 (change)="onChange($event,'modelop')" style="width: 84%">
+															<option value="" selected>Please select</option>
+															<option *ngFor="let item of modelopAdj let i = index" value="{{item.key}}">{{item.label}}</option>
+														</select> -->
+
+
+											</div>
+											<div class="form-group col-xs-6 col-md-6">
+												<div class="radio">
+													<label>
+														<input type="radio" name="radiogroup" (change)="onSelectionChange('goc')">GOC</label>
+												</div>
+												<div class="radio">
+													<label>
+														<input type="radio" name="radiogroup" (change)="onSelectionChange('ms')" [checked]="true">MG/MS/LE</label>
+												</div>
+											</div>
+											<div class="form-group col-xs-6 col-md-6">
+												<div class="radio">
+													<label>
+														<input type="radio" name="oos" name="radiogroup" (change)="onSelectionChange('oos')">OOS</label>
+												</div>
+												<div class="radio">
+													<label>
+														<input type="radio" name="radiogroup" (change)="onSelectionChange('oos_le')">OOS/MLE/CLE</label>
+												</div>
+
+											</div>
+
+											<div class="form-group col-xs-6 col-md-6">
+												<label for="name" class="control-label  {{disabledGoc}}">GOC</label>
+												<input [disabled]="lForecastFilter.common_radio!='goc'" class="form-control" id="name" placeholder="GOC" [(ngModel)]="lForecastFilter.goc_id"
+												 [ngModelOptions]="{standalone: true}" (blur)="validateGOC()" required>
+											</div>
+											<div class="form-group col-xs-6 col-md-6">
+												<label for="name" class="control-label  {{disabledGoc}}">OOS</label>
+												<!-- <p-dropdown  [style]="{'width':'150px'}" [disabled]="lForecastFilter.common_radio!='oos'" [options]="lOosData.result" [(ngModel)]="lForecastFilter.oos.key" [ngModelOptions]="{standalone: true}" optionLabel="objectOfSaleName"></p-dropdown> -->
+												<br>
+												<div class="search-wrapper">
+													<p-autoComplete [disabled]="lForecastFilter.common_radio!='oos'" [(ngModel)]="lForecastFilter.oos" [ngModelOptions]="{standalone: true}"
+													 [suggestions]="lSearchResultsOOS" field="objectOfSaleName" (onSelect)="setSelected_Type($event,'oos')" (completeMethod)="filterSingle_Type($event,'oos')"
+													 [size]="10" [minLength]="1" placeholder="OOS" [dropdown]="true" (onDropdownClick)="onChange_Type($event,'oos')"></p-autoComplete>
+
+
+													<button class="close-icon-type" (click)="eraseMe_Type('oos')"></button>
+
+												</div>
+												<!-- <select [disabled]="lForecastFilter.common_radio!='oos'" [(ngModel)]="lForecastFilter.oos.key" [ngModelOptions]="{standalone: true}"
+														 class="form-control custompicker" (change)="onChange($event,'oos')">
+															<option value="" selected>Please select</option>
+															<option *ngFor="let item of lOosData.result let i = index" value="{{item.oosId}}">{{item.objectOfSaleName}}</option>
+														</select> -->
+											</div>
+
+											<app-managed-geo [lFilterData]="lForecastFilter" [lGeoData]="lGeographyData" [lDisabledColor]="disabledClr" [lDynamicTitle]="dynamic_modal_title"></app-managed-geo>
+											<app-managed-seg [lFilterData]="lForecastFilter" [lSegData]="lSegmentData" [lDisabledColor]="disabledClr" [lDynamicTitle]="dynamic_modal_title"></app-managed-seg>
+											<app-legal-entity [lFilterData]="lForecastFilter" [lLegalData]="lLegalEntityData" [lDisabledColor]="disabledClr" [lDynamicTitle]="dynamic_modal_title"></app-legal-entity>
+											<app-select-account [lFilterData]="lForecastFilter" [lAccountData]="lAccountData" [lDisabledColor]="disabledClr" [lDynamicTitle]="dynamic_modal_title"></app-select-account>
+
+											<app-select-affliates [lFilterData]="lForecastFilter" [lAffliateData]="lAffliateData" [lDisabledColor]="disabledClr" [lDynamicTitle]="dynamic_modal_title"></app-select-affliates>
+
+											<!-- Ruby AFFLIATE	 -->
+											<!-- <div class="form-group col-xs-5 col-md-5">
+														<label for="name" class="control-label">Affliate/MLE</label>
+														<div class="dropdown">
+						
+						
+						
+														   
+														<select [(ngModel)]="lForecastFilter.affliate.key" [ngModelOptions]="{standalone: true}" class="form-control custompicker"
+															 (change)="onChange($event,'affliate')">
+																<option value="" selected>Please select</option>
+																<option *ngFor="let item of affliatesData.result let i = index" value="{{item.name}}">{{item.desc}}</option>
+															</select> 
+						
+														</div>
+													</div>-->
+											<!--End Ruby AFFLIATE	 -->
+
+
+
+											<div class="form-group col-xs-10 col-md-10">
+												<label for="name" class="control-label"> Portfolio</label>
+												<input type="text" class="form-control" [(ngModel)]="lForecastFilter.fp.label" [ngModelOptions]="{standalone: true}" placeholder="Forecast Portfolio">
+
+											</div>
+											<div class="form-group col-xs-2 col-md-2 lovIcon">
+												<span class="input-group-addon rubylov" data-toggle="modal" data-target="#forecastModal" (click)="loadFpData()">
+													<i class="glyphicon glyphicon-search"></i>
+												</span>
+											</div>
+											<div class="form-group col-xs-7 col-md-7">
+												<label for="name" class="control-label {{disabledEop}}">EOP/AVG</label>
+												<select [disabled]="lForecastFilter.modelop.key=='startingPos'" [(ngModel)]="lForecastFilter.eop" [ngModelOptions]="{standalone: true}"
+												 class="form-control custompicker">
+													<option value="0" selected>AVG</option>
+													<option value="1">EOP</option>
+												</select>
+											</div>
+
+											<div class="form-group col-xs-5 col-md-5">
+												<label for="name" class="control-label">TXN CCY</label>
+												<div class="dropdown">
+
+
+
+													<p-multiSelect [options]="currenctData.result" [ngModelOptions]="{standalone: true}" [(ngModel)]="lForecastFilter.txn" optionLabel="id"></p-multiSelect>
+
+												</div>
+											</div>
+											<div class="form-group col-xs-7 col-md-7">
+												<label for="name" class="control-label">Display CCY</label>
+												<div class="dropdown">
+
+
+													<select [(ngModel)]="lForecastFilter.displayccy" [ngModelOptions]="{standalone: true}" class="form-control custompicker"
+													 onmousedown="if(this.options.length>8){this.size=10;}" onchange='this.size=1;' onblur="this.size=1;">
+														<option value="" disabled selected>Select your option</option>
+														<option *ngFor="let item of currenctData.result let i = index" value="{{item.id}}">{{item.id}}</option>
+													</select>
+
+												</div>
+											</div>
+											<div class="form-group col-xs-5 col-md-5">
+												<label for="name" class="control-label">Sim Type</label>
+												<div class="dropdown">
+
+
+													<select [(ngModel)]="lForecastFilter.simtype.key" [ngModelOptions]="{standalone: true}" class="form-control custompicker"
+													 (change)="onChange($event,'simtype')">
+														<option value="" selected>Please select</option>
+														<option *ngFor="let item of slimType.result let i = index" value="{{item.code}}">{{item.desc}}</option>
+													</select>
+
+												</div>
+											</div>
+											<div class="form-group col-xs-7 col-md-7">
+												<label for="name" class="control-label">Display</label>
+												<!--  <select
+																[(ngModel)]="lForecastFilter.display.key" multiple
+																[ngModelOptions]="{standalone: true}"
+																class="form-control custompicker"
+																(change)="onChange($event,'display')">
+																<option value="" selected>Please select</option>
+																<option *ngFor="let item of displayData let i = index"
+																	value="{{item.key}}">{{item.label}}</option>
+															</select> -->
+												<span>
+													<p-multiSelect [style]="{'width':'150px'}" [options]="displayData" [ngModelOptions]="{standalone: true}" [(ngModel)]="lForecastFilter.display.key"
+													 optionLabel="label"></p-multiSelect>
+												</span>
+											</div>
+											<div class="form-group col-xs-5 col-md-5">
+												<label for="name" class="control-label">Scale</label>
+												<div class="dropdown">
+
+
+													<select [(ngModel)]="lForecastFilter.scale.key" [ngModelOptions]="{standalone: true}" class="form-control custompicker" (change)="onChange($event,'scale')">
+														<option value="" selected>Please select</option>
+														<option *ngFor="let item of scaleType let i = index" value="{{item.key}}">{{item.label}}</option>
+													</select>
+
+												</div>
+											</div>
+											<div class="form-group col-xs-7 col-md-7">
+
+												<label>
+													<!-- <ui-switch [(ngModel)]="lForecastFilter.hideTp" [ngModelOptions]="{standalone: true}"></ui-switch> -->
+													<input type="checkbox" name="rubyCheckBox" data-size="mini" [(ngModel)]="lForecastFilter.hideTp" [ngModelOptions]="{standalone: true}"> HideTreasury TP
+												</label>
+											</div>
+											<div class="form-group col-xs-5 col-md-5">
+
+												<label class="{{disabledShowTP}}">
+													<input type="checkbox" name="rubyCheckBox" data-size="mini" [disabled]="lForecastFilter.modelop.key=='modalBeta'" [(ngModel)]="lForecastFilter.showTp"
+													 [ngModelOptions]="{standalone: true}"> Show TP
+													<!-- <ui-switch [disabled]="lForecastFilter.modelop.key=='modalBeta'" [(ngModel)]="lForecastFilter.showTp" [ngModelOptions]="{standalone: true}"></ui-switch> Show TP -->
+												</label>
+											</div>
+
+											<div class="form-group col-xs-6 col-md-6">
+
+												<button type="button" class="btn btn-primary " (click)="doForecast()">
+													<i class="fa fa-filter" aria-hidden="true"></i> Search
+												</button>
+											</div>
+											<div class="form-group col-xs-6 col-md-6">
+												<button type="button" class="btn btn-danger" (click)="reset()">
+													<i class="fa fa-refresh" aria-hidden="true"></i> Reset
+												</button>
+											</div>
+
+											
+
+
+
+
+										</div>
+									</div>
+								</div>
+								</div>
+							</div>
+
+
+
+
+
+
+
+						</form>
+					</nav>
+
+					<!-- Page Content Holder -->
+					<div id="content">
+
+						<p-growl [value]="msgs" life="2000"></p-growl>
+
+						<div class="row">
+							<div class="col-md-12" style="">
+								<div *ngIf="showGrid" class="panel panel-primary">
+									<div class="panel-heading">
+										<span style="font-size: 13px;font-weight: bold;">Forecast Data</span>
+									</div>
+									<div class="panel-body" style="height: 600px;overflow-y: scroll;">
+
+										<tabs [lPushedTabs]="pushedTabs">
+											<tab [tabTitle]="asOfDateDisp">
+
+												<div class="ng-star-inserted" style="height: auto;margin-top: -12px;">
+
+
+
+													<div style="width: 103%;background:white" class="my_scroller">
+														<div class="row">
+															<div style="">
+																<div class="col-md-12" style="width: 400%;">
+																	<p-treeTable [value]="lTreeData" [styleClass]="my_table" [contextMenu]="cm" selectionMode="single" [(selection)]="lSelectedFPDATA" (onNodeSelect)="nodeSelect($event)"
+																	 (onNodeUnselect)="nodeUnselect($event)" scrollHeight="200px" frozenWidth="200px" unfrozenWidth="600px">
+																		<p-header>
+																			<span class="pull-left"> </span>
+																			<span style="margin-left: 32%;">
+																				<div class="btn-group" style="margin-left: 24%;">
+																					<button type="button" class="btn btn-default btnHeight" pTooltip="Expand" tooltipPosition="top">
+																						<dl>
+																							<dt>
+																								<i class="fa fa-chevron-right" aria-hidden="true"></i>
+																							</dt>
+																							<dd>Expand</dd>
+																						</dl>
+
+																					</button>
+																					<button type="button" class="btn btn-default btnHeight" pTooltip="Edit" tooltipPosition="top">
+																						<dl>
+																							<dt>
+																								<i class="fa fa-edit" aria-hidden="true"></i>
+																							</dt>
+																							<dd>Edit</dd>
+
+																						</dl>
+
+
+																					</button>
+																					<button type="button" class="btn btn-default btnHeight" pTooltip="Save" tooltipPosition="top" (click)="saveAdj()">
+																						<dl>
+																							<dt>
+																								<i class="fa fa-floppy-o" aria-hidden="true"></i>
+																							</dt>
+																							<dd>Save</dd>
+
+																						</dl>
+
+																					</button>
+																					<button type="button" class="btn btn-default btnHeight" pTooltip="View" tooltipPosition="top">
+																						<dl>
+																							<dd>
+																								<i class="fa fa-eye" aria-hidden="true"></i>
+																							</dd>
+																							<dt>View</dt>
+
+																						</dl>
+
+																					</button>
+																					<button type="button" class="btn btn-default btnHeight" pTooltip="Adjsut" tooltipPosition="top">
+																						<dl>
+																							<dt>
+																								<i class="fa fa-chain-broken" aria-hidden="true"></i>
+																							</dt>
+																							<dd>
+																								<div class="dropdown">
+																									<label class="dropdown-toggle" data-toggle="dropdown">
+																										Adjust
+																										<span class="caret"></span>
+																									</label>
+																									<ul class="dropdown-menu">
+																										<li>
+																											<a href="#" class="gridDrop">Manual</a>
+																										</li>
+																										<li>
+																											<a href="#" class="gridDrop">Target</a>
+																										</li>
+																										<li>
+																											<a href="#" class="gridDrop">Incremental</a>
+																										</li>
+																									</ul>
+																								</div>
+																							</dd>
+
+																						</dl>
+
+																					</button>
+
+																					<button type="button" class="btn btn-default btnHeight" pTooltip="Download" tooltipPosition="top" (click)="downloadAction()">
+																						<dl>
+																							<dt>
+																								<i class="fa fa-cloud-download" aria-hidden="true"></i>
+																							</dt>
+																							<dd>Download</dd>
+
+																						</dl>
+
+																					</button>
+
+																					<button type="button" class="btn btn-default btnHeight" pTooltip="Upload" tooltipPosition="top" (click)="downloadAction()">
+																						<dl>
+																							<dt>
+																								<i class="fa fa-upload" aria-hidden="true"></i>
+																							</dt>
+																							<dd>Upload</dd>
+
+																						</dl>
+
+																					</button>
+																				</div>
+																			</span>
+																		</p-header>
+																		<!-- 
+																				background: #00bdf261;
+																				background: #ed8b00b8;
+																				background: #367b2585; -->
+																		<p-column [style]="{'width':'40%'}" [styleClass]="my_stickcol" field="customJoin(accountId,desc)" header="Description" expander="true" frozen="true">
+																		</p-column>
+																		<p-column header="{{lModelOp}}" [style]="{'width':'15%'}">
+																			<ng-template let-col let-node="rowData" pTemplate="body">
+																				<span *ngIf="node.emeraldFrcstData!=null">
+
+																					<p *ngIf="node.emeraldFrcstData.B!=null" style="font-size: 11px; line-height: 23px; font-weight: bold;">
+																						<i class="fa fa-bar-chart" aria-hidden="true"></i> Balance
+																					</p>
+																					<p *ngIf="node.emeraldFrcstData.R!=null" style="font-size: 11px; line-height: 23px; font-weight: bold;">
+																						Rate</p>
+																					<p *ngIf="node.emeraldFrcstData.RE!=null" style="font-size: 11px; line-height: 23px; font-weight: bold;">
+																						Rev/(Exp)</p>
+
+																				</span>
+																			</ng-template>
+																		</p-column>
+																		<p-column *ngFor="let i of totalCols; let i = index" header="{{i.label}}" [style]="{'width':'25%'}">
+																			<ng-template let-col let-node="rowData" pTemplate="body">
+																				<span *ngIf="node.emeraldFrcstData!=null">
+																					<p *ngIf="node.emeraldFrcstData.B!=null" style="font-size: 11px; line-height: 23px;">
+
+																						<span *ngIf="node.emeraldFrcstData.B.dispTenorValueMap[i.index]<0">
+																							<span class="redRow">({{formatBalRow(node.emeraldFrcstData.B.dispTenorValueMap[i.index]| number:'.2')}})</span>
+																						</span>
+																						<span *ngIf="node.emeraldFrcstData.B.dispTenorValueMap[i.index]>0">{{formatBalRow(node.emeraldFrcstData.B.dispTenorValueMap[i.index]| number:'.2')}}</span>
+																					</p>
+																					<p *ngIf="node.emeraldFrcstData.R!=null" style="font-size: 11px; line-height: 23px;">
+
+																						<span *ngIf="node.emeraldFrcstData.R.dispTenorValueMap[i.index]<0">
+																							<span class="redRow">({{formatBalRow(node.emeraldFrcstData.R.dispTenorValueMap[i.index]| number:'.2')}})</span>
+																						</span>
+																						<span *ngIf="node.emeraldFrcstData.R.dispTenorValueMap[i.index]>0">{{formatBalRow(node.emeraldFrcstData.R.dispTenorValueMap[i.index]| number:'1.1-2')}} %</span>
+
+																					</p>
+																					<p *ngIf="node.emeraldFrcstData.RE!=null" style="font-size: 11px; line-height: 23px;">
+
+																						<span *ngIf="node.emeraldFrcstData.RE.dispTenorValueMap[i.index]<0">
+																							<span class="redRow">({{format_Rev_RE_Row(node.emeraldFrcstData.RE.dispTenorValueMap[i.index] | number:'1.1-2') }})</span>
+																						</span>
+																						<span *ngIf="node.emeraldFrcstData.RE.dispTenorValueMap[i.index]>0">{{format_Rev_RE_Row(node.emeraldFrcstData.RE.dispTenorValueMap[i.index] | number:'.2')}}</span>
+																				</span>
+																			</ng-template>
+																		</p-column>
+																		<!-- <p-column>
+																									
+																									<ng-template let-col let-node="rowData" pTemplate="body">
+														
+																									<div class="row" *ngIf="node.forecastData!=null">
+																										<div
+																											*ngIf="node.forecastData.B!=null || node.forecastData.R!=null || node.forecastData.RE!=null">
+																											<div class="col-md-12 ">
+														
+														
+														
+														
+														
+																												<div *ngIf="node.forecastData!=undefined">
+																													<table id="myTable" class="table table-bordered"
+																														style="width: 100%">
+														
+																														<tr>
+																															<th style="width: 100px">Adjusted</th>
+														
+																															<th style="width: 100px"
+																																*ngFor="let item of totalCols; let i = index">{{item.label}}</th>
+														
+																														</tr>
+														
+																														<tr *ngIf="node.forecastData!=null">
+														
+																															<td style="width: 100px"
+																																*ngIf="node.forecastData.B!=undefined">{{node.forecastData.B.type}}</td>
+																															<span *ngFor="let i of totalCols; let i = index">
+																																<td class="tdContent"
+																																*ngIf="node.forecastData.B!=null">{{node.forecastData.B[i.index]}}</td>
+														
+														
+														
+																															</span>
+														
+														
+														
+																														</tr>
+																														<tr *ngIf="node.forecastData!=null">
+														
+																															<td *ngIf="node.forecastData.R!=undefined">{{node.forecastData.R.type}}</td>
+																															<span *ngFor="let i of totalCols; let i = index">
+																																<td class="tdContent"
+																																*ngIf="node.forecastData.R!=null">{{node.forecastData.R[i.index]}}</td>
+														
+														
+																															</span>
+														
+														
+														
+																														</tr>
+																														<tr *ngIf="node.forecastData!=null">
+														
+																															<td *ngIf="node.forecastData.RE!=undefined">{{node.forecastData.RE.type}}</td>
+																															<span *ngFor="let i of totalCols; let i = index">
+																																<td class="tdContent"
+																																*ngIf="node.forecastData.RE!=null">{{node.forecastData.RE[i.index]}}</td>
+																															</span>
+														
+														
+																														</tr>
+														
+														
+																													</table>
+																												</div>
+														
+														
+																											</div>
+																										</div>
+																									</div>
+														
+																									</ng-template> </p-column> --></p-treeTable>
+																	<!-- <p>Selected Node: {{selectedFile ? selectedFile.label :
+																	'none'}}</p> -->
+																	<p-contextMenu #cm (itemClick)="calMe($event)" [model]="items"></p-contextMenu>
+																</div>
+															</div>
+														</div>
+													</div>
+												</div>
+											</tab>
+											<tab *ngFor="let item of pushedTabs let i = index" tabTitle="{{item.title}}">
+
+
+
+												<div style="height: 584px;background:white">
+
+													<app-model-definition [lFilterData]="lForecastFilter" *ngIf="item.type=='INC'"></app-model-definition>
+													<app-view-fore-cast *ngIf="item.type=='FP'" [lMonthData]="totalCols"></app-view-fore-cast>
+													<app-model-assignment *ngIf="item.type=='MA'" [lFilterData]="lForecastFilter"></app-model-assignment>
+
+												</div>
+
+											</tab>
+
+										</tabs>
+
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+
+
+
+
+
+
+
+					</div>
+				</div>
+
+			</div>
+
+
+
+		</div>
+	</div>
+</div>
+
+
+<!-- <div id="myPopover" class="col-md-8 colmd-offset-2">
+
+	<div>
+		<p-tree *ngIf="dynamic_modal_title=='Managed Geography'"
+			[value]="lGeographyData" (onNodeExpand)="nodeExpand($event,'GE')"
+			[style]="{'overflow':'auto'}" selectionMode="single"
+			[(selection)]="selectedFile" (onNodeSelect)="nodeSelect($event,'GE')"></p-tree>
+	</div>
+	<div>
+		<p-tree *ngIf="dynamic_modal_title=='Managed Segment'"
+			[value]="lSegmentData" (onNodeExpand)="nodeExpand($event,'MS')"
+			[style]="{'overflow':'auto'}" selectionMode="single"
+			[(selection)]="selectedFile" (onNodeSelect)="nodeSelect($event,'MS')"></p-tree>
+	</div>
+
+	<div>
+		<p-tree *ngIf="dynamic_modal_title=='Legal Entity'"
+			[value]="lLegalEntityData" (onNodeExpand)="nodeExpand($event,'LE')"
+			[style]="{'overflow':'auto'}" selectionMode="single"
+			[(selection)]="selectedFile" (onNodeSelect)="nodeSelect($event,'LE')"></p-tree>
+	</div>
+	<div>
+		<p-tree *ngIf="dynamic_modal_title=='Accounts'" [value]="lAccountData"
+			(onNodeExpand)="nodeExpand($event,'AC')"
+			[style]="{'overflow':'auto'}" selectionMode="single"
+			[(selection)]="selectedFile" (onNodeSelect)="nodeSelect($event,'AC')"></p-tree>
+	</div>
+</div> -->
+<div class="modal fade" id="dynamicTreeModal" aria-hidden="true" style="display: none;">
+
+	<div class="modal-dialog modal-sm-6">
+
+		<div class="modal-content">
+
+			<div class="modal-header">
+
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">{{dynamic_modal_title}}</h4>
+
+
+			</div>
+
+			<div class="modal-body">
+
+				<div class="row">
+
+					<div class="col-md-8 colmd-offset-2">
+
+						<div>
+							<p-tree *ngIf="dynamic_modal_title=='Managed Geography'" [value]="lGeographyData" (onNodeExpand)="nodeExpand($event,'GE')"
+							 [style]="{'overflow':'auto'}" selectionMode="single" [(selection)]="selectedFile" (onNodeSelect)="nodeSelect($event,'GE')"></p-tree>
+						</div>
+						<div>
+							<p-tree *ngIf="dynamic_modal_title=='Managed Segment'" [value]="lSegmentData" (onNodeExpand)="nodeExpand($event,'MS')" [style]="{'overflow':'auto'}"
+							 selectionMode="single" [(selection)]="selectedFile" (onNodeSelect)="nodeSelect($event,'MS')"></p-tree>
+						</div>
+
+						<div>
+							<p-tree *ngIf="dynamic_modal_title=='Legal Entity'" [value]="lLegalEntityData" (onNodeExpand)="nodeExpand($event,'LE')" [style]="{'overflow':'auto'}"
+							 selectionMode="single" [(selection)]="selectedFile" (onNodeSelect)="nodeSelect($event,'LE')"></p-tree>
+						</div>
+						<div>
+							<p-tree *ngIf="dynamic_modal_title=='Accounts'" [value]="lAccountData" (onNodeExpand)="nodeExpand($event,'AC')" [style]="{'overflow':'auto'}"
+							 selectionMode="single" [(selection)]="selectedFile" (onNodeSelect)="nodeSelect($event,'AC')"></p-tree>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="modal-footer">
+
+				<a href="javascript:;" class="btn btn-danger" data-dismiss="modal">
+					<i class="fa fa-times" aria-hidden="true"></i> Close</a>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+
+<div class="modal fade" id="prefModal" aria-hidden="true" style="display: none;">
+
+	<div class="modal-dialog modal-lg">
+
+		<div class="modal-content">
+
+			<div class="modal-header">
+
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">{{lPrefModal=='show'?'Load Preference':'Save Preference'}}</h4>
+
+			</div>
+
+			<div class="modal-body">
+
+				<div class="row" style="width: 100%; overflow: scroll">
+
+					<div *ngIf="lPrefModal=='show'" class="col-md-12" style="width: 500%; overflow: scroll">
+
+						<p-dataTable [value]="lLoadPref" (onRowDblclick)="selectAndClose($event,'pref')" selectionMode="single">
+							<p-column field="type" header="Preference " [filter]="true" filterPlaceholder="Search" [sortable]="true"> </p-column>
+							<p-column field="pearlAccessType" header="Pearl Access Type" [sortable]="true" [filter]="true" filterPlaceholder="Search">
+							</p-column>
+							<p-column field="preferenceName" header="Preference Name" [filter]="true" filterPlaceholder="Search" [sortable]="true">
+							</p-column>
+							<p-column field="mngDesc" header="Managed Geo" [filter]="true" filterPlaceholder="Search" [sortable]="true">
+							</p-column>
+							<p-column field="msDesc" header="Managed Segment" [filter]="true" filterPlaceholder="Search" [sortable]="true">
+							</p-column>
+							<p-column field="leDesc" header="Legal Entity" [filter]="true" filterPlaceholder="Search" [sortable]="true">
+							</p-column>
+							<p-column field="adjmts" header="Scenario" [filter]="true" filterPlaceholder="Search" [sortable]="true">
+							</p-column>
+							<p-column field="gocText" header="Goc" [filter]="true" filterPlaceholder="Search" [sortable]="true"> </p-column>
+							<p-column field="accountDesc" header="Account" [filter]="true" filterPlaceholder="Search" [sortable]="true">
+							</p-column>
+							<p-column field="adjmts" header="Model/OutputAdjutment" [filter]="true" filterPlaceholder="Search" [sortable]="true">
+							</p-column>
+							<p-column field="affiliate" header="Affliate" [filter]="true" filterPlaceholder="Search" [sortable]="true">
+							</p-column>
+							<p-column field="userSimulationType" header="Simualtion Type" [filter]="true" filterPlaceholder="Search" [sortable]="true">
+							</p-column>
+							<p-column field="displayCurrency" header="Display Currency" [filter]="true" filterPlaceholder="Search" [sortable]="true">
+							</p-column>
+							<p-column field="forecastProduct" header="Forecast PortFolio" [filter]="true" filterPlaceholder="Search" [sortable]="true">
+							</p-column>
+							<p-column field="scale" header="Scale" [filter]="true" filterPlaceholder="Search" [sortable]="true"> </p-column>
+							<p-column field="transactionCurrency" header="Transaction Currency" [filter]="true" filterPlaceholder="Search" [sortable]="true">
+							</p-column>
+							<p-column field="showTp" header="Show TP" [filter]="true" filterPlaceholder="Search" [sortable]="true"> </p-column>
+						</p-dataTable>
+
+
+					</div>
+					<div *ngIf="lPrefModal=='load'" class="col-md-12">
+						<div class="form-group col-xs-8 col-md-8 col-md-offset-3">
+							<label for="name" class="control-label ">Name</label>
+							<input type="text" class="form-control" id="name" placeholder="Preference Name" style="width: 90%" [(ngModel)]="lSavePref.name"
+							 required>
+							<br>
+							<br>
+							<label>
+								<input type="checkbox" value="">Set as Default
+							</label>
+
+						</div>
+
+					</div>
+
+
+				</div>
+
+			</div>
+
+			<div class="modal-footer">
+				<a *ngIf="lPrefModal=='load'" href="javascript:;" class="btn btn-success" data-dismiss="modal">
+					<i class="fa fa-times" aria-hidden="true"></i> Save</a>
+				<a href="javascript:;" class="btn btn-danger" data-dismiss="modal">
+					<i class="fa fa-times" aria-hidden="true"></i> Close</a>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+<div class="modal fade" id="forecastModal" aria-hidden="true" style="display: none;">
+
+	<div class="modal-dialog modal-lg">
+
+		<div class="modal-content">
+
+			<div class="modal-header">
+
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+					<span aria-hidden="true">&times;</span>
+				</button>
+				<h4 class="modal-title">Forecast Portfolio Search</h4>
+
+			</div>
+
+			<div class="modal-body">
+
+				<div class="row">
+
+					<div class="col-md-12" style="height: 500px;
+					overflow: scroll;">
+
+						<div style="width:136%">
+						<p-dataTable [value]="lFpPopupData" [lazy]="true" [rows]="20" [paginator]="true" [rowsPerPageOptions]="[20]" [totalRecords]="totalRecords"
+						 (onLazyLoad)="loadLazyFpData($event)" (onRowDblclick)="selectAndClose($event,'fp')" selectionMode="single" [(selection)]="selectedFpData">
+							<p-column field="frcstProdId" [style]="{'width':'8%','white-space':'nowrap'}" header="FP ID " filterPlaceholder="Search" [sortable]="true" [filter]="true"></p-column>
+							<p-column field="frcstProdName" [style]="{'width':'40%','white-space':'nowrap'}" header="Forecast PortFolio Name" [sortable]="true" [filter]="true" filterPlaceholder="Search"></p-column>
+							<p-column field="frcstProdNotes" [style]="{'width':'20%','white-space':'nowrap'}" header="Description" [filter]="true" filterPlaceholder="Search" [sortable]="true"></p-column>
+							<p-column field="mainProductCode" [style]="{'width':'10%','white-space':'nowrap'}" header="Product Type" [filter]="true" filterPlaceholder="Search" [sortable]="true"></p-column>
+							<p-column field="maturityType" [style]="{'width':'12%','white-space':'nowrap'}" header="Maturity Type" [filter]="true" filterPlaceholder="Search" [sortable]="true"></p-column>
+							<p-column field="updatedBy" [style]="{'width':'10%','white-space':'nowrap'}" header="Last Updated By" [filter]="true" filterPlaceholder="Search" [sortable]="true"></p-column>
+							<p-column field="" [style]="{'width':'8%','white-space':'nowrap'}" header="Last Updated On"></p-column>
+						</p-dataTable>
+					</div>
+
+					</div>
+
+
+				</div>
+
+			</div>
+
+			<div class="modal-footer">
+
+				<a href="javascript:;" class="btn btn-danger" data-dismiss="modal">
+					<i class="fa fa-times" aria-hidden="true"></i> Close</a>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+<div class="my-container">
+	<ngx-loading [show]="loadingFp" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+</div>
+<!-- <ngx-loading [show]="loading"
+	
+		[config]="{ backdropBorderRadius: '14px' }"></ngx-loading> -->
