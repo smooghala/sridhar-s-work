@@ -1,0 +1,533 @@
+/*@import 'assets/showcase/css/primeng.css';
+@import 'assets/showcase/css/code.css';
+@import 'assets/showcase/css/site.css';*/
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #000000;
+  background: #dde4e9;
+  font-size: 12px !important;
+}
+
+/* ------------------ Button ------------------------------- */
+.btn-default {
+  color: #333333;
+  border-color: transparent;
+  background-color: #CCCCCC;
+}
+
+body .ui-button {
+  background-color: #008ce6;
+  border-radius: 0 !important;
+  height: 30px;
+  padding: 0 !important;
+}
+
+button.ui-button-secondary.ui-button.ui-widget.ui-state-default.ui-corner-all.ui-button-text-only {
+  background-color: #75787b;
+  color: #FFFFFF;
+}
+
+.ui-button.ui-button-secondary:enabled:hover,
+.ui-button.ui-button-secondary:focus,
+.ui-splitbutton.ui-button-secondary .ui-button:enabled:hover,
+.ui-splitbutton.ui-button-secondary .ui-button:focus {
+  background-color: #53565A !important;
+}
+
+.ui-button.ui-button-success.ui-state-default, .ui-splitbutton.ui-button-success .ui-button.ui-state-default {
+  background-color: #84BD00 !important;
+}
+
+.ui-button.ui-button-success:enabled:hover,
+.ui-button.ui-button-success:focus,
+.ui-splitbutton.ui-button-success .ui-button:enabled:hover,
+.ui-splitbutton.ui-button-success .ui-button:focus {
+  background-color: #00843D !important;
+}
+
+.ui-button.ui-button-info.ui-state-default, .ui-splitbutton.ui-button-info .ui-button.ui-state-default {
+  background-color: #00BDF2 !important;
+}
+
+.ui-button.ui-button-info:enabled:hover,
+.ui-button.ui-button-info:focus,
+.ui-splitbutton.ui-button-info .ui-button:enabled:hover,
+.ui-splitbutton.ui-button-info .ui-button:focus {
+  background-color: #008ce6 !important;
+}
+
+.ui-button.ui-button-warning.ui-state-default, .ui-splitbutton.ui-button-warning .ui-button.ui-state-default {
+  background-color: #C99700 !important;
+}
+
+.ui-button.ui-button-warning:enabled:hover,
+.ui-button.ui-button-warning:focus,
+.ui-splitbutton.ui-button-warning .ui-button:enabled:hover,
+.ui-splitbutton.ui-button-warning .ui-button:focus {
+  background-color: #ED8B00 !important;
+}
+
+.ui-button.ui-button-danger.ui-state-default, .ui-splitbutton.ui-button-danger .ui-button.ui-state-default {
+  background-color: #FF0000 !important;
+}
+
+.ui-button.ui-button-danger:enabled:hover,
+.ui-button.ui-button-danger:focus,
+.ui-splitbutton.ui-button-danger .ui-button:enabled:hover,
+.ui-splitbutton.ui-button-danger .ui-button:focus {
+  background-color: #CB6015;
+}
+
+body .ui-button:focus,
+body .ui-button:enabled:hover,
+body .ui-button:not(.ui-state-disabled):hover {
+  background-color: #00BDF2;
+}
+
+body .ui-button:enabled:active,
+body .ui-button:not(.ui-state-disabled):active {
+  background-color: #00BDF2;
+}
+
+/* ------------------ Data-Grid ------------------------------- */
+.ui-datatable th.ui-state-default {
+  background: #EEEEEE !important;
+}
+
+.ui-datatable-header {
+  height: 40px;
+  background: #EEEEEE;
+  text-align: left !important;
+  font-weight: bold;
+  padding: 10px !important;
+}
+
+.ui-datatable th.ui-state-active {
+  color: #000000;
+}
+
+.ui-datatable .ui-datatable-data > tr > td {
+  border-color: #CCCCCC !important;
+}
+
+.ui-datatable tbody > tr.ui-widget-content.ui-datatable-odd {
+  background-color: #F1F1F1 !important;
+}
+
+.ui-datatable tbody > tr.ui-widget-content.ui-datatable-even {
+  background: #FFFFFF !important;
+}
+
+.ui-datatable tbody > tr.ui-widget-content {
+  height: 28px !important;
+}
+
+.ui-datatable tbody > tr.ui-widget-content:hover {
+  background: #b2ebfb !important;
+}
+
+body .ui-datatable .ui-datatable-data > tr > td {
+  padding: 0 10px;
+}
+
+body .ui-datatable tbody > tr.ui-widget-content {
+  height: 28px !important;
+}
+
+body .ui-datatable .ui-datatable-thead > tr > th, .ui-datatable .ui-datatable-tfoot > tr > td {
+  font-weight: bold;
+  height: 40px;
+}
+
+/* ------------------ Form ------------------------------- */
+.ui-inputtext {
+  border-color: #CCCCCC !important;
+  border-radius: 0 !important;
+}
+
+.ui-inputtext:hover {
+  border: 1px solid #97999B !important;
+}
+
+.ui-inputtext.ui-state-focus,
+.ui-inputtext:focus {
+  border-color: #008ce6 !important;
+}
+
+.ui-chkbox-box {
+  background: #FFFFFF;
+  border: 1px solid #CCCCCC !important;
+  border-radius: 0 !important;
+}
+
+body .ui-chkbox .ui-chkbox-box.ui-state-active {
+  border: 1px solid #008ce6 !important;
+  background-color: #008ce6;
+}
+
+.ui-chkbox .ui-chkbox-icon {
+  color: #FFFFFF;
+}
+
+body .ui-chkbox .ui-chkbox-box:not(.ui-state-disabled):not(.ui-state-active):hover,
+body .ui-radiobutton .ui-radiobutton-box:not(.ui-state-disabled):not(.ui-state-active):hover {
+  border-color: #008ce6 !important;
+}
+
+.ui-radiobutton-box.ui-widget.ui-state-default {
+  background: #FFFFFF;
+  border: 1px solid #CCCCCC !important;
+}
+
+body .ui-radiobutton .ui-radiobutton-box.ui-state-active {
+  border: 1px solid #008ce6 !important;
+  background-color: #FFFFFF;
+}
+
+body .ui-radiobutton .ui-radiobutton-box.ui-state-active .ui-radiobutton-icon.fa-circle {
+  color: #008ce6 !important;
+  line-height: 15px;
+  font-size: 9px;
+}
+
+body .ui-state-disabled, body .ui-widget:disabled {
+  background: #EEEEEE;
+  opacity: .75;
+}
+
+.ui-inputtext.ng-dirty.ng-invalid,
+p-dropdown.ng-dirty.ng-invalid > .ui-dropdown,
+p-autocomplete.ng-dirty.ng-invalid > .ui-autocomplete > .ui-inputtext,
+p-calendar.ng-dirty.ng-invalid > .ui-inputtext,
+p-chips.ng-dirty.ng-invalid > .ui-inputtext,
+p-inputmask.ng-dirty.ng-invalid > .ui-inputtext,
+p-checkbox.ng-dirty.ng-invalid .ui-chkbox-box,
+p-radiobutton.ng-dirty.ng-invalid .ui-radiobutton-box,
+p-inputswitch.ng-dirty.ng-invalid .ui-inputswitch,
+p-listbox.ng-dirty.ng-invalid .ui-inputtext,
+p-multiselect.ng-dirty.ng-invalid > .ui-multiselect,
+p-spinner.ng-dirty.ng-invalid > .ui-inputtext,
+p-selectbutton.ng-dirty.ng-invalid .ui-button,
+p-togglebutton.ng-dirty.ng-invalid .ui-button {
+  border-color: #FF0000 !important;
+}
+
+.ui-messages-error {
+  background-color: #FFFFFF;
+  border-color: #FF0000;
+  height: 30px;
+  width: 50% !important;
+  color: #FF0000;
+  border-radius: 0 !important;
+  font-size: 14px;
+}
+
+.ui-messages-error .fa-close {
+  color: #FF0000 !important;
+}
+
+/* ------------------ Paginator ------------------------------- */
+.ui-paginator {
+  height: 44px;
+  background: #EEEEEE;
+  border-top-color: #CCCCCC;
+  color: #53565A;
+  text-align: right;
+  padding: 10px 0 !important;
+}
+
+.ui-paginator .ui-paginator-page,
+.ui-paginator .ui-paginator-pages,
+.ui-paginator .ui-paginator-next,
+.ui-paginator .ui-paginator-last,
+.ui-paginator .ui-paginator-first,
+.ui-paginator .ui-paginator-prev,
+.ui-paginator .ui-paginator-current {
+  background: none;
+  border: none;
+  color: #53565A;
+}
+
+a.ui-paginator-page.ui-paginator-element.ui-state-default.ui-corner-all.ui-state-active {
+  background: #FFFFFF;
+  border-color: #CCCCCC;
+  border-radius: 0;
+  width: 50px;
+  color: #53565A;
+}
+
+/* ------------------ DropDown ------------------------------- */
+.ui-dropdown, .ui-multiselect {
+  border-color: #CCCCCC !important;
+  height: 30px !important;
+  text-align: left;
+  border-radius: 0 !important;
+}
+
+.ui-dropdown .ui-dropdown-label {
+  text-indent: 10px;
+  line-height: 20px;
+}
+
+.ui-dropdown:not(.ui-state-disabled):hover,
+.ui-dropdown:not(.ui-state-disabled):hover .ui-dropdown-label {
+  background-color: #FFFFFF !important;
+  border-color: #97999B !important;
+}
+
+.ui-dropdown:not(.ui-state-disabled):hover .ui-dropdown-label.ui-inputtext {
+  border: 0 none !important;
+}
+
+.ui-dropdown .ui-dropdown-trigger {
+  border: 0 none;
+}
+
+.ui-dropdown:not(.ui-state-disabled):hover .ui-dropdown-trigger,
+.ui-dropdown.ui-state-focus .ui-dropdown-trigger {
+  background: none !important;
+  height: 28px !important;
+}
+
+.ui-dropdown.ui-state-focus .ui-dropdown-label {
+  background: #FFFFFF !important;
+}
+
+.ui-dropdown.ui-state-focus, .ui-multiselect.ui-state-focus {
+  border: 1px solid #008ce6 !important;
+  box-shadow: none;
+}
+
+.ui-multiselect .ui-multiselect-label {
+  padding-top: 0;
+}
+
+.ui-multiselect .ui-multiselect-panel {
+  width: 100%;
+}
+
+body .ui-multiselect:not(.ui-state-disabled):hover .ui-multiselect-trigger {
+  background: none;
+}
+
+.ui-multiselect:not(.ui-state-disabled):hover {
+  border-color: #97999B !important;
+}
+
+body .ui-dropdown-panel .ui-dropdown-items, .ui-multiselect .ui-multiselect-item {
+  padding: 10px 0;
+  font-size: 14px;
+  text-indent: 10px;
+}
+
+body .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item, body .ui-multiselect .ui-multiselect-item {
+  padding: 3px 0px;
+}
+
+body .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item:not(.ui-state-highlight):hover,
+body .ui-dropdown-panel .ui-dropdown-items .ui-dropdown-item.ui-state-highlight,
+body .ui-multiselect .ui-multiselect-item.ui-state-highlight {
+  background-color: #EEEEEE;
+  color: #53565A;
+}
+
+.ui-dropdown .ui-dropdown-panel.ui-shadow, body .ui-multiselect .ui-multiselect-panel {
+  box-shadow: 0px 3px 7px 0px #CCCCCC;
+}
+
+/* ------------------ Date-picker/Calendar ------------------------------- */
+.ui-calendar.ui-calendar-w-btn {
+  background: none;
+  height: 30px;
+}
+
+.ui-calendar button {
+  background: #FFFFFF;
+  font-size: 20px;
+  border: 1px solid #CCCCCC;
+  border-left: none !important;
+  color: #CCCCCC;
+}
+
+.ui-calendar.ui-calendar-w-btn input {
+  border: 1px solid #CCCCCC;
+  line-height: normal;
+  height: 30px !important;
+  border-right: none;
+}
+
+.ui-calendar:hover button, .ui-calendar.ui-calendar-w-btn:hover input {
+  background: #FFFFFF !important;
+  color: #97999B;
+  border-color: #97999B !important;
+}
+
+.ui-calendar.ui-calendar-w-btn:hover input {
+  border-right: none !important;
+}
+
+body .ui-datepicker .ui-datepicker-header {
+  color: #FFFFFF !important;
+  height: 44px;
+  background-color: #008ce6;
+}
+
+body .ui-datepicker .ui-datepicker-header .ui-datepicker-prev, body .ui-datepicker .ui-datepicker-header .ui-datepicker-next {
+  color: #FFFFFF;
+  line-height: 20px;
+  vertical-align: middle;
+}
+
+.ui-datepicker .ui-datepicker-header .ui-datepicker-prev:hover, .ui-datepicker .ui-datepicker-header .ui-datepicker-next:hover {
+  background-color: #002D72 !important;
+  border-radius: 10px;
+}
+
+body .ui-datepicker table td a {
+  min-height: 26px;
+  min-width: 26px;
+  text-align: center;
+  color: #373a3c;
+}
+
+.ui-datepicker td span, .ui-datepicker td a {
+  padding: 0.3em;
+}
+
+body .ui-datepicker .ui-datepicker-calendar td:not(.ui-state-disabled) a:hover {
+  background-color: #CCCCCC;
+  border-radius: 50%;
+}
+
+body .ui-datepicker table.ui-datepicker-calendar td:not(.ui-state-disabled) a.ui-state-highlight {
+  background-color: #EEEEEE;
+  border-radius: 50%;
+}
+
+body .ui-datepicker table.ui-datepicker-calendar td:not(.ui-state-disabled) a.ui-state-active {
+  color: #FFFFFF;
+  background-color: #008ce6;
+  border-radius: 50%;
+}
+
+.ui-datepicker th {
+  color: #CCCCCC;
+}
+
+body .ui-datepicker table.ui-datepicker-calendar td:not(.ui-state-disabled) a.ui-state-highlight {
+  border-radius: 50%;
+}
+
+/* ------------------ Custom styles - Alert ------------------------------- */
+.ui-grid-row.scorecard-header {
+  background: #CCCCCC;
+  font-size: 13px;
+  height: 50px;
+  text-align: center !important;
+  font-weight: bold;
+  display: block;
+  padding: 15px 0;
+  color: #008ce6 !important;
+}
+
+.ui-grid-responsive .ui-grid-row.scorecard-header {
+  font-size: 12px;
+  padding: 10px 0px;
+}
+
+.ui-carousel .ui-carousel-viewport .ui-carousel-items .ui-carousel-item {
+  border: 1px solid #CCCCCC;
+  background: #EEEEEE !important;
+  margin: 5px;
+  border-radius: 0;
+}
+
+.ui-carousel-item .active .ui-grid-row.scorecard-header {
+  background: #002D72 !important;
+  color: #FFFFFF !important;
+}
+
+.ui-carousel-item:hover .ui-grid-row.scorecard-header {
+  background: #002D72 !important;
+  color: #FFFFFF !important;
+}
+
+.ui-carousel-item .active, .ui-carousel-item:hover {
+  border: 1px solid #002D72 !important;
+}
+
+.priority-high {
+  Color: #e54343;
+  Font-weight: bold;
+}
+
+.priority-medium {
+  Color: #ED8B00;
+  Font-weight: bold;
+}
+
+.priority-low {
+  Color: #84BD00;
+  Font-weight: bold;
+}
+
+.ui-carousel .ui-carousel-viewport .ui-carousel-items {
+  margin-left: 35px !important;
+}
+
+.ui-carousel .ui-carousel-button {
+  margin: 0;
+}
+
+.ui-carousel-button.ui-carousel-prev-button, .ui-carousel-button.ui-carousel-next-button {
+  width: 30px;
+  position: absolute;
+  text-align: center;
+  font-size: 25px;
+  z-index: 1;
+  height: 100% !important;
+  background: #FFFFFF;
+  padding-top: 100px;
+}
+
+.ui-carousel-button.ui-carousel-next-button {
+  right: 0px;
+}
+
+.ui-carousel.ui-widget.ui-widget-content {
+  border: 0 none;
+}
+
+.content-section {
+  display: block;
+  margin: 10px;
+  border: 0 none !important;
+  overflow: hidden;
+  background-color: #FFFFFF;
+  padding: 5px;
+}
+
+.action-icon {
+  font-size: 20px;
+  padding: 0 5px;
+}
+
+.ui-widget {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.total {
+  font-weight: bold;
+  border-top: 1px dotted #008ce6;
+  width: 100%;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+.total:hover, .active .total {
+  border-top: 1px dotted #002D72;
+}
+
+
+
