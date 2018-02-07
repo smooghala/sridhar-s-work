@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<title>RUBY</title>
+	<base href="/">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="icon" type="image/x-icon" href="favicon.ico" />
+	<link href="./assets/css/custom.css" rel="stylesheet">
+	<link href="./assets/css/animate.css" rel="stylesheet">
+
+	<link href="./assets/css/bootstrap.css" rel="stylesheet">
+	<link href="./assets/css/styles.css" rel="stylesheet">
+
+	<link href="./assets/css/citi/button.css" rel="stylesheet">
+
+	<link href="./assets/styles/primeng.css" rel="stylesheet">
+
+	<link href="./assets/css/citi/styles.css" rel="stylesheet">
+	<link href="./assets/css/bootstrap-switch.css" rel="stylesheet">
+	
+	<!-- <link href="./assets/css/citi/citicontrols.css" rel="stylesheet"> -->
+	<!-- <link href="./assets/css/citi/toolkit.css" rel="stylesheet"> -->
+
+	<script src="./assets/js/jquery.js" type="text/javascript"></script>
+
+	<script src="./assets/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="./assets/js/bootstrap-switch.js" type="text/javascript"></script>	
+
+
+</head>
+
+<body class="fade-in one">
+
+	<app-root></app-root>
+
+</body>
+<script type="text/javascript">
+	$("[name='rubyCheckBox']").bootstrapSwitch();
+	$(window).click(function (e) {
+
+		if (e.target.closest('.rubylov') == null && e.target.closest('.popOverDiv') != null) {
+
+		}
+		else if (e.target.closest('.rubylov') != null && e.target.closest('.popOverDiv') == null) {
+
+		} else {
+			if ($('.popOverDiv').is(':visible')) {
+				if (document.activeElement.placeholder != "Search") {
+					$('.popOverDiv').hide(100);
+				}
+
+			}
+		}
+	});
+</script>
+
+
+</html>
