@@ -1,0 +1,10 @@
+<!-- <app-forecast-filter></app-forecast-filter>   -->
+<span *ngIf="!showInRubyApp">
+    <app-header-component></app-header-component>
+</span>
+<span *ngIf="showInRubyApp">
+    <app-fore-cast-grid></app-fore-cast-grid>
+</span>
+<span *ngIf="!showInRubyApp">
+    <app-position></app-position>
+</span>

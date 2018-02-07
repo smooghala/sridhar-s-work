@@ -1,0 +1,104 @@
+<nav class="navbar navbar-inverse navCss">
+	<div class="container-fluid">
+
+		<ul class="nav navbar-nav">
+			<li>
+				<a href="#">
+					<i class="fa fa-columns"></i> Define Scenario
+				</a>
+			</li>
+			<li class="active">
+				<a href="#">
+					<i class="fa fa-files-o"></i>
+					Mappings</a>
+			</li>
+			<li>
+				<a href="#">
+					<i class="fa fa-remove"></i>Delete Scenario</a>
+			</li>
+
+		</ul>
+
+
+
+		<ul class="nav navbar-nav navbar-right">
+			<div class="dropdown">
+				<button class="btn btn-success dropdown-toggle" type="button" data-toggle="dropdown" style="margin-right: 34px;margin-top: 11px;">
+					<i class="fa fa-bell-o" aria-hidden="true"></i>
+					<span class="caret"></span>
+				</button>
+				<ul class="dropdown-menu">
+					<!-- <span *ngFor="let i of totalCols; let i = index"> -->
+					<li *ngFor="let i of messages let i = index">
+						<a href="#">{{i.text}}</a>
+					</li>
+
+				</ul>
+			</div>
+
+		</ul>
+	</div>
+</nav>
+<div class="container">
+
+
+
+	<div style="border-bottom: solid 3px #a94442;font-size:18px">
+		<i class="fa fa-map"></i> Mappings Type
+	</div>
+	<br>
+	<br>
+	<div class="row">
+
+
+		<div class="col-md-12">
+
+			<div class="col-md-2">Select mapping type</div>
+			<div class="col-md-4">
+				<div class="dropdown">
+					<button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+						{{valSelected}}
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li>
+							<a (click)="setSelected('SME')">Scenatio Manager Economic Variable Mapping </a>
+						</li>
+						<li>
+							<a (click)="setSelected('MCC')">Missing Curve Currency Mapping</a>
+						</li>
+
+					</ul>
+				</div>
+			</div>
+			<br>
+			<br>
+			<br>
+			<br>
+			<div class="row">
+
+				<div class="col-md-12">
+
+					<p-dataTable [value]="lTestData">
+						<p-column field="rubyVarName" header="Ruby Var Name " [filter]="true" filterPlaceholder="Search"></p-column>
+						<p-column field="mdType" header="Market Data Type" [filter]="true" filterPlaceholder="Search"></p-column>
+						<p-column field="key" header="Key" [filter]="true" filterPlaceholder="Search"></p-column>
+
+						<p-column field="country" header="Country" [filter]="true" filterPlaceholder="Search"></p-column>
+						<p-column field="tenor" header="Curve tenor" [filter]="true" filterPlaceholder="Search"></p-column>
+
+					</p-dataTable>
+
+
+				</div>
+
+
+			</div>
+
+		</div>
+
+
+
+	</div>
+
+</div>

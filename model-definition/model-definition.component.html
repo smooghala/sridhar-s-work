@@ -1,0 +1,643 @@
+<div *ngIf="showModelDefinition">
+  <div class="tab-content">
+    <div class="tab-pane fade active in" id="nav-pills-tab-4" style="height: 584px; overflow-y: scroll;border: 1px solid #e6d5d5">
+      <div style="width: 100%;">
+        <div class="" style="float: left; width: 30%">
+          <div class="">
+            <p-treeTable [value]="viewModelTreeData" (onRowDblclick)="onRowDblclick($event)" (onNodeExpand)="onNodeExpand($event)">
+              <p-column field="customJoin(mdlName)">
+              </p-column>
+            </p-treeTable>
+          </div>
+        </div>
+        <div style="width: 70%;float: left;">
+          <div *ngIf="modelAssumptionView">
+          <p-panel header="Header Info" [toggleable]="true">
+            <div class="row">
+              <div class="col-md-12" id="modelAssumptionView">
+                <div class="form-group col-xs-6 col-md-6">
+                  <label for="name" class="control-label">Model Name
+                  </label>
+                  <input  type="text" class="form-control" value={{headerData.mdlName}} readonly="readonly" disabled="disabled">
+                </div>
+                <div class="form-group col-xs-6 col-md-6">
+                  <label for="name" class="control-label">Validation Id
+                  </label>
+                  <input  type="text" class="form-control" value={{headerData.validationId}} readonly="readonly" disabled="disabled">
+                </div>
+                <div class="form-group col-xs-6 col-md-6">
+                  <label for="name" class="control-label">Description
+                  </label>
+                 <textarea class="form-control" readonly="readonly" disabled="disabled">{{headerData.description}}</textarea>
+                </div>
+                <div class="form-group col-xs-6 col-md-6">
+                  <label for="name" class="control-label">Notes
+                  </label>
+                  <textarea class="form-control" readonly="readonly" disabled="disabled">{{headerData.notes}}</textarea>
+                </div>
+                <div class="form-group col-xs-6 col-md-6">
+                  <label for="name" class="control-label">Model Category
+                  </label>
+                  <input  type="text" class="form-control" value={{headerData.mdlCategory}} readonly="readonly" disabled="disabled">
+                </div>
+                <div class="form-group col-xs-6 col-md-6">
+                  <label for="name" class="control-label">MQS Value
+                  </label>
+                  <input  type="text" class="form-control" value={{headerData.mqsValue}} readonly="readonly" disabled="disabled">
+                </div>
+                <div class="form-group col-xs-6 col-md-6">
+                  <label for="name" class="control-label">Category Type
+                  </label>
+                  <input  type="text" class="form-control" value={{headerData.mdlCategoryType}} readonly="readonly" disabled="disabled">
+                </div>
+                <div class="form-group col-xs-6 col-md-6">
+                  <label for="name" class="control-label">Umberlla Model
+                  </label>
+                  <input  type="text" class="form-control" value={{headerData.umbrellaMdlName}} readonly="readonly" disabled="disabled">
+                </div>
+                <div class="form-group col-xs-6 col-md-6">
+                  <label for="name" class="control-label">Model Definition
+                  </label>
+                  <input  type="text" class="form-control" value={{headerData.mdlDefinition}} readonly="readonly" disabled="disabled">
+                </div>
+                <div class="form-group col-xs-6 col-md-6">
+                  <label for="name" class="control-label">Adjust Permits
+                  </label>
+                  <input  type="text" class="form-control" value={{headerData.adjustmentPermitted}} readonly="readonly" disabled="disabled">
+                </div>                
+              </div>
+            </div>
+            </p-panel>
+            <p-panel header="Equation" [toggleable]="true">
+            	<div class="row" style="margin:0px">
+		            <div class="col-md-12" id="equation">	              
+		              <textarea class="form-control" rows="15" readonly="readonly" disabled="disabled">{{equationData}}</textarea>
+					 </div>
+	            </div>
+            </p-panel>
+            <div *ngIf="dvrvDetailPanel">
+            	<p-panel header="Derived Variable Values" [toggleable]="true">
+            		<div class="" style="overflow-x: scroll">
+	            		<div style="width: 750%">
+	            			<p-dataTable [value]="dvDataArr">
+		                		<p-column header="Model Name" field="derivedDataName"></p-column>
+				                <p-column header="Type" field="originalAdjFlag"></p-column>
+				                <p-column header="Scenario" field="scenarioName"></p-column>
+				                <p-column header="Ccycode" field="ccyCode"></p-column>
+				                 <p-column *ngFor="let colB of tpColsForRVBZero" [header]="colB.header" [field] = "colB.field"></p-column>
+				                 <p-column *ngFor="let colA of tpColsForRVAZero" [header]="colA.header" [field] = "colA.field"></p-column>
+		                	</p-dataTable>
+		             	</div>
+		            </div>
+            	</p-panel>
+            </div>
+          </div>
+          <div *ngIf="tpModelDefinition">
+	          <p-panel header="Header Info" [toggleable]="true">
+	            <div class="row" id="modelAssumptionView">
+	              <div class="col-md-12">
+	                <div class="form-group col-xs-6 col-md-6">
+	                  <label for="name" class="control-label">Model Type
+	                  </label>
+	                  <input  type="text" class="form-control" value={{tpMdlType}} readonly="readonly" disabled="disabled">
+	                </div>
+	                <div class="form-group col-xs-6 col-md-6">
+	                  <label for="name" class="control-label">TP Model Name
+	                  </label>
+	                  <input  type="text" class="form-control" value={{headerData.mdlName}} readonly="readonly" disabled="disabled">
+	                </div>
+	                <div class="form-group col-xs-6 col-md-6">
+	                  <label for="name" class="control-label">Validation Id
+	                  </label>
+	                  <input  type="text" class="form-control" value={{headerData.validationID}} readonly="readonly" disabled="disabled">
+	                </div>
+	                <div class="form-group col-xs-3 col-md-3">
+	                  <label for="name" class="control-label">TP Split Flag
+	                  </label>
+	                  <input  type="text" class="form-control" value={{headerData.splitFlag}} readonly="readonly" disabled="disabled">
+	                </div>
+	                <div *ngIf="tpBasisSpread" class="form-group col-xs-3 col-md-3">
+	                  <label for="name" class="control-label">TP Basis Spread Flag
+	                  </label>
+	                  <div>
+	                  	<input  type="checkbox" [checked]="headerData.basisSpread" readonly="readonly" disabled="disabled">
+	                  </div>
+	                </div>
+	                <div class="form-group col-xs-6 col-md-6">
+	                  <label for="name" class="control-label">Description
+	                  </label>
+	                  <textarea class="form-control" readonly="readonly" disabled="disabled">{{headerData.description}}</textarea>
+	                </div>
+	                <div class="form-group col-xs-6 col-md-6">
+	                  <label for="name" class="control-label">Notes
+	                  </label>
+	                  <textarea class="form-control" readonly="readonly" disabled="disabled">{{headerData.notes}}</textarea>
+	                </div>
+	              </div>
+	              </div>
+              </p-panel>
+              <div *ngIf="caterpillarView">
+				  <div class="">
+						<h4>Transfer Pricing Caterpillar</h4>
+				  </div>
+				  <p-panel header="" [toggleable]="true">
+				  <p-header>
+					 <div class="ui-helper-clearfix" style="float: left">
+			            <span class="ui-panel-title">Non-term Transfer Pricing</span>	
+			            </div>
+			            <div style="float: right">
+			           		<button pButton type="button" [label]="transferShowLabel" (click)="showAllTransfer($event)"></button>
+			            </div>
+			        </p-header>
+					  <div class="">
+					  	<div class="" id="nonTermVectors" style="overflow-x: scroll;">
+										<div class="{{nonTermVectorWidth}}">
+											<p-dataTable [value]="tpCatSpecialVectorsArr"> <p-headerColumnGroup>
+											<p-row> <p-column header="" rowspan="2"></p-column> <p-column
+												header="Yeild Curve Index" rowspan="2"></p-column> <p-column
+												header="Tenor/Rate" rowspan="2"></p-column> <p-column
+												header="Daycount Unit" rowspan="2"></p-column> <p-column
+												header="Spread Table" rowspan="2"></p-column> <p-column
+												header="Non Term Allocation Percentage" [colspan]="specialVectorSpan"></p-column>
+											</p-row> <p-row> <p-column *ngFor="let col of tpColsForNTAP"
+												[header]="col.header"></p-column> </p-row> </p-headerColumnGroup> <p-column
+												field="specialVectorType"></p-column> <p-column
+												field="rateTable"></p-column> <p-column field="tenor"></p-column>
+											<p-column field="daycntUnit"></p-column> <p-column
+												field="geogSpreadTable"> <ng-template let-col
+												let-lData="rowData" pTemplate="body"> <span
+												style="white-space: unset; font-size: 11px;">{{lData[col.field]}}</span>
+											</ng-template> </p-column> <p-column *ngFor="let col of tpColsForNTAP"
+												[field]="col.field"></p-column> </p-dataTable>
+										</div>
+						</div>
+					</div>
+				</p-panel>
+				<div class="" >
+					<h4>Term Transfer Pricing</h4>
+				 </div>
+				 <p-panel header="Term Vector Settings" [toggleable]="true">
+		            <div class="row" id="termTransferPricing">
+		              <div class="col-md-12">
+		                <div class="form-group col-xs-6 col-md-6">
+		                  <label for="name" class="control-label">Yield Curve Index
+		                  </label>
+		                  <input  type="text" class="form-control" value={{tpVectorFieldSet.rateTable}} readonly="readonly" disabled="disabled">
+		                </div>
+		                <div class="form-group col-xs-6 col-md-6">
+		                  <label for="name" class="control-label">Spread Table
+		                  </label>
+		                  <input  type="text" class="form-control" value={{tpVectorFieldSet.geogSpreadTable}} readonly="readonly" disabled="disabled">
+		                </div>
+		                <div class="form-group col-xs-6 col-md-6">
+		                  <label for="name" class="control-label">Caterpillar Methodology
+		                  </label>
+		                  <input  type="text" class="form-control" value={{tpVectorFieldSet.methodology}} readonly="readonly" disabled="disabled">
+		                </div>
+		                <div class="form-group col-xs-6 col-md-6">
+		                  <label for="name" class="control-label">Negative Tickets Rule
+		                  </label>
+		                  <input  type="text" class="form-control" value={{tpVectorFieldSet.targetBalanceDrops}} readonly="readonly" disabled="disabled">
+		                </div>
+		                <div class="form-group col-xs-6 col-md-6">
+		                  <label for="name" class="control-label">TP Rule When Product Balance Falls to Zero
+		                  </label>
+		                  <input  type="text" class="form-control" value={{tpVectorFieldSet.targetBalanceZero}} readonly="readonly" disabled="disabled">
+		                </div>
+		                <div class="form-group col-xs-6 col-md-6">
+		                  <label for="name" class="control-label">Daycount Unit
+		                  </label>
+		                  <textarea class="form-control" readonly="readonly" disabled="disabled">{{tpVectorFieldSet.dayCount}}</textarea>
+		                </div>
+		              </div>
+		              </div>
+	              </p-panel>
+	              <div class="col-md-6" style="padding: 5px 10px 0px 0px">
+	                <p-panel header="Term Vector Allocation 1" [toggleable]="true">
+	                   <div class="row">
+			                <div class="form-group col-md-12">
+			                  <label for="name" class="control-label">Ticket Terminations when Vectors Change
+			                  </label>
+			                  <input  type="text" class="form-control" value={{tpInitialFieldset.reversalStrip}} readonly="readonly" disabled="disabled">
+			                </div>
+			                <div class="form-group col-xs-6 col-md-6">
+			                  <label for="name" class="control-label">As Of
+			                  </label>
+			                  <input  type="text" class="form-control" value="{{tpInitialFieldset.startDate | date:'MM/dd/yyyy'}}" readonly="readonly" disabled="disabled">
+			                </div>
+			                <div class="form-group col-xs-6 col-md-6">
+			                  <label for="name" class="control-label">End Date
+			                  </label>
+			                  <input  type="text" class="form-control" value="{{tpInitialFieldset.endDate | date:'MM/dd/yyyy'}}" readonly="readonly" disabled="disabled">
+			                </div>
+			                <div class="form-group col-md-12">
+			                  <p-dataTable [value]="tpInitialFieldsetArr">
+			                  		<p-column header="Vector" field="vector"></p-column>
+			                  		<p-column header="Percentage" field="percent"></p-column>
+			                  </p-dataTable>
+			                </div>
+		                </div>
+	                </p-panel>
+	            </div>
+	            <div class="col-md-6" style="padding: 5px 0px 0px 0px">
+	                <p-panel header="Term Vector Allocation 2" [toggleable]="true">
+		                <div class="row">
+			                <div class="form-group col-md-12">
+			                  <label for="name" class="control-label">Ticket Terminations when Vectors Change
+			                  </label>
+			                  <input  type="text" class="form-control" value={{tpChangeFiledset.reversalStrip}} readonly="readonly" disabled="disabled">
+			                </div>
+			                <div class="form-group col-xs-6 col-md-6">
+			                  <label for="name" class="control-label">Start Date
+			                  </label>
+			                  <input  type="text" class="form-control" value="{{tpChangeFiledset.startDate | date:'MM/dd/yyyy'}}" readonly="readonly" disabled="disabled">
+			                </div>
+			                <div class="form-group col-xs-6 col-md-6">
+			                  <label for="name" class="control-label">End date
+			                  </label>
+			                  <input  type="text" class="form-control" value="{{tpChangeFiledset.endDate | date:'MM/dd/yyyy'}}" readonly="readonly" disabled="disabled">
+			                </div>
+			                <div class="form-group col-md-12">
+			                  <p-dataTable [value]="tpChangeFiledsetArr">
+			                  		<p-column header="Vector" field="vector"></p-column>
+			                  		<p-column header="Percentage" field="percent"></p-column>
+			                  </p-dataTable>
+			                </div>
+			             </div>
+	                </p-panel>
+	            </div>
+            </div>
+            <div *ngIf="matchedFlowView">
+            	<div class="" >
+					<h4>Transfer Pricing Matched Funding</h4>
+				 </div>
+				 <p-panel header="" [toggleable]="true">
+				 	<div class="row" id="" style="margin:0px">
+				 		<div class="" >
+				 			<h5>Select Forecast Portfolio for Tenor Split Assumptions:</h5>
+				 		</div>
+				 		<div class="form-group col-xs-12 col-md-12">
+		                    <label for="name" class="control-label">Forecast Portfolio 
+		                    </label>
+		                    <input style="width: 50%" type="text" class="form-control" value={{matchedFundAttr.frcstProductName}} readonly="readonly">
+		                </div>
+		                <div class="form-group col-xs-4 col-md-4">
+		                  <label for="name" class="control-label">TP Rate Index
+		                  </label>
+		                  <input  type="text" class="form-control" value={{matchedFundAttr.rateIndexTp}} readonly="readonly">
+		                </div>
+		                <div class="form-group col-xs-4 col-md-4">
+		                  <label for="name" class="control-label">Tp Spread Table
+		                  </label>
+		                  <input  type="text" class="form-control" value={{matchedFundAttr.spreadTableTp}} readonly="readonly">
+		                </div>
+		                <div class="form-group col-xs-4 col-md-4">
+		                  <label for="name" class="control-label">TP Rules When Balance Falls to Zero
+		                  </label>
+		                  <input  type="text" class="form-control" value={{matchedFundAttr.targetBalanceZero}} readonly="readonly">
+		                </div>
+		                <div class="form-group col-xs-4 col-md-4">
+		                  <label for="name" class="control-label">Rate Type
+		                  </label>
+		                  <input  type="text" class="form-control" value={{matchedFundAttr.rateType}} readonly="readonly">
+		                </div>
+		                <div class="form-group col-xs-4 col-md-4">
+		                  <label for="name" class="control-label">Amortisation
+		                  </label>
+		                  <input  type="text" class="form-control" value={{matchedFundAttr.amortisationType}} readonly="readonly">
+		                </div>
+		                <div class="form-group col-xs-4 col-md-4">
+		                  <label for="name" class="control-label">Daycount Unit
+		                  </label>
+		                  <input  type="text" class="form-control" value={{matchedFundAttr.dayCount}} readonly="readonly">
+		                </div>
+				 	</div>
+				 </p-panel>
+				 <p-panel [toggleable]="true">
+				 	<p-header>
+					 <div class="ui-helper-clearfix" style="float: left">
+			            <span class="ui-panel-title">Monthly Tenor Split Assumptions</span>	
+			            </div>
+			            <div style="float: right">
+			           		<button pButton type="button" [label]="tenorShowLabel" (click)="showAll($event)"></button>
+			            </div>
+			        </p-header>
+					 <div class="">
+					 	<div style="overflow-y: scroll; height: 240px">
+								<div class="" >
+								 	<p-dataTable [value]="matchedFundVectorArr" *ngFor="let newCol of cols60" [tableStyle]="{'width':'24%','float': 'left'}">
+								 		<p-headerColumnGroup>
+											<p-row> 
+												<p-column [header]="newCol.header" colspan="3"></p-column>
+											</p-row>
+											<p-row> 
+												<p-column header="Tenor"></p-column>
+												<p-column header="Allocation %"></p-column>
+												<p-column header="Reprice Freq"></p-column>
+											</p-row>
+										</p-headerColumnGroup>
+										<p-column field="vectorM1ToM60"></p-column>
+										<p-column field="allocation_M1ToM60"></p-column>
+										<p-column field="repriceFreqM1ToM60"></p-column>
+								 	</p-dataTable>
+								 	</div>	
+						</div>
+										
+	            		
+				 	</div>
+				 </p-panel>
+            </div>
+            
+            <div *ngIf="spreadView"></div>	
+	</div>
+
+          <div *ngIf="fpView">
+
+            <p-panel header="Header Info" [toggleable]="true">
+              <div class="row" id="fpView" style="margin:0px">
+                  <div class="form-group col-xs-6 col-md-6">
+                    <label for="name" class="control-label">Forecast Portfolio Id
+                    </label>
+                    <input  type="text" class="form-control" value={{headerData.forecastid}} readonly="readonly" disabled="disabled">
+                  </div>
+                  <div class="form-group col-xs-6 col-md-6">
+                    <label for="name" class="control-label">Forecast Portfolio Name
+                    </label>
+                    <input  type="text" class="form-control" value={{headerData.mdlName}} readonly="readonly" disabled="disabled">
+                  </div>
+                  <div class="form-group col-xs-6 col-md-6">
+                    <label for="name" class="control-label">Leaf PMF Product for Jade Output
+                    </label>
+                    <input  type="text" class="form-control" value={{headerData.pmfProduct}} readonly="readonly" disabled="disabled">
+                  </div>
+                  <div class="form-group col-xs-6 col-md-6">
+                    <label for="name" class="control-label">Maturity Type
+                    </label>
+                    <input  type="text" class="form-control" value={{headerData.maturityType}} readonly="readonly" disabled="disabled">
+                  </div>
+                  <div class="form-group col-xs-6 col-md-6">
+                    <label for="name" class="control-label">AVG to EOP Factor (Optional)
+                    </label>
+                    <input  type="text" class="form-control" value={{headerData.manlFactName}} readonly="readonly" disabled="disabled">
+                  </div>
+                  <div class="form-group col-xs-6 col-md-6">
+                    <label for="name" class="control-label">Description
+                    </label>
+                     <textarea class="form-control" readonly="readonly" disabled="disabled">{{headerData.description}}</textarea>
+                  </div>
+                  <div class="form-group col-xs-6 col-md-6">
+                    <label for="name" class="control-label">Notes
+                    </label>
+                    <textarea class="form-control" readonly="readonly" disabled="disabled">{{headerData.notes}}</textarea>
+                  </div>
+                
+                </div>
+            </p-panel>
+            <p-panel header="Period Payments" [toggleable]="true">
+              <div class="row" id="periodPayments" style="margin:0px">
+                <div class="form-group col-xs-4 col-md-4">
+                  <label for="name" class="control-label">Period Payment
+                  </label>
+                  <input  type="text" class="form-control" value={{headerData.periodPaymentType}} readonly="readonly" disabled="disabled">
+                </div>
+                <div class="form-group col-xs-4 col-md-4">
+                  <label for="name" class="control-label">Discount Index
+                  </label>
+                  <input  type="text" class="form-control" value={{headerData.discIndx}} readonly="readonly" disabled="disabled">
+                </div>
+                <div class="form-group col-xs-4 col-md-4">
+                  <label for="name" class="control-label">CPR Constant
+                  </label>
+                  <input  type="text" class="form-control" value={{headerData.cpr}} readonly="readonly" disabled="disabled">
+                </div>
+                <div class="form-group col-xs-4 col-md-4">
+                  <label for="name" class="control-label">Change in non accural
+                  </label>
+                  <input  type="text" class="form-control" value={{headerData.nonAccrual}} readonly="readonly" disabled="disabled">
+                </div>
+                <div class="form-group col-xs-4 col-md-4">
+                  <label for="name" class="control-label">Discount Spread(Risk) Constant
+                  </label>
+                  <input  type="text" class="form-control" value={{headerData.discSpread}} readonly="readonly" disabled="disabled">
+                </div>
+                <div class="form-group col-xs-4 col-md-4">
+                  <label for="name" class="control-label">CPR Ref Index
+                  </label>
+                  <input  type="text" class="form-control" value={{headerData.refIdxCpr}} readonly="readonly" disabled="disabled">
+                </div>
+                <div class="form-group col-xs-4 col-md-4">
+                  <label for="name" class="control-label">Change in non accural(Ref index)
+                  </label>
+                  <input  type="text" class="form-control" value={{headerData.refIdxNonAccrual}} readonly="readonly" disabled="disabled">
+                </div>
+                <div class="form-group col-xs-4 col-md-4">
+                  <label for="name" class="control-label">Discount Spread (Risk) Ref Index
+                  </label>
+                  <input  type="text" class="form-control" value={{headerData.refIdxDiscSpread}} readonly="readonly" disabled="disabled">
+                </div>
+              </div>
+            </p-panel>            
+             <p-panel header="Other" [toggleable]="true">
+             	<div class="row" style="margin: 0px">
+                    <div class="col-md-4" id="dataElements" style="border: 1px solid #e6d5d5;height:355px; overflow-y:scroll">
+                    	<div class="">
+                    		<label for="name" class="control-label"><h5>Data Elements</h5></label>
+                    	</div>
+                      <div class="form-group">
+                        <label for="name" class="control-label">Product Type
+                        </label>
+                        <input  type="text" class="form-control" value={{headerData.mainProdCode}} readonly="readonly" disabled="disabled">
+                      </div>
+                       <div class="form-group">                        
+                       		<p-dataTable [value]="dataElmtArr">
+			                	<p-column header="Data Elements" field="dataElement"></p-column>
+			                </p-dataTable>
+                      </div>
+                       <div class="form-group">
+                       		<p-dataTable [value]="rwaMappingArr">
+			                	<p-column header="RWA Data Filter" field="rwaMappings"></p-column>
+			                </p-dataTable>
+                      </div>
+                    </div>
+                    
+                    <div class="col-md-8" id="dataElements" style="border: 1px solid #e6d5d5;height:355px; overflow-y:scroll">
+                   		 <div class="">
+                    		<label for="name" class="control-label"><h5>Tenor Split Assumption</h5></label>
+                    	</div>
+	                    <div class="form-group">
+	                        <label for="name" class="control-label">Rate Characteristics:
+	                        </label>
+	                        <input type="radio" name="fpGroup" [checked]="fixed" readonly="readonly" disabled="disabled">
+	                         <label for="name" class="control-label">Fixed
+	                        </label>
+	                        <input type="radio" name="fpGroup" [checked]="float" readonly="readonly" disabled="disabled">
+	                         <label for="name" class="control-label">Float
+	                        </label>
+	                     </div>
+	                     <div class="form-group">
+	                        <label for="name" class="control-label">Amortization Characteristics:
+	                        </label>
+	                        <input type="radio" name="fpaGroup" [checked]="bullet" readonly="readonly" disabled="disabled">
+	                         <label for="name" class="control-label">Bullet
+	                        </label>
+	                        <input type="radio" name="fpaGroup" [checked]="monthly" readonly="readonly" disabled="disabled">
+	                         <label for="name" class="control-label">Equal Monthly Installments
+	                        </label>
+	                     </div>
+	                     <div class="form-group col-xs-6 col-md-6">
+		                  <label for="name" class="control-label">Base Index
+		                  </label>
+		                  <input type="text" class="form-control" value={{baseIndex}} readonly="readonly" disabled="disabled">
+		                </div>
+		                <div class="form-group col-xs-6 col-md-6">
+		                  <label for="name" class="control-label">Rules if balance falls down suddenly(portfolio sale)
+		                  </label>
+		                  <input type="text" class="form-control" value={{tpRule}} readonly="readonly" disabled="disabled">
+		                </div>
+		                <div class="form-group col-xs-6 col-md-6">
+		                  <label for="name" class="control-label">Re-price Frequency
+		                  </label>
+		                  <input type="text" class="form-control" value={{rePriceFreq}} readonly="readonly" disabled="disabled">
+		                </div>
+		                <div class="form-group col-xs-6 col-md-6">
+		                  <label for="name" class="control-label">Daycount Unit
+		                  </label>
+		                  <input type="text" class="form-control" value={{dayCountUnit}} readonly="readonly" disabled="disabled">
+		                </div>
+		                <div class="form-group col-xs-12 col-md-12">
+                       		<p-dataTable [value]="tenorDetlArr">
+			                	<p-column header="Tenor" field="tenor"></p-column>
+			                	<p-column header="Allocation" field="allocation"></p-column>
+			                	<p-column header="Rate Formula" field="rateTbl"></p-column>
+			                </p-dataTable>
+                      </div>
+                    </div>
+                 </div>
+             </p-panel>
+          </div>
+		<div *ngIf="rvView">
+			<p-panel header="Header Info - Formula Setup" [toggleable]="true">
+				<div class="row">
+	              <div class="col-md-12" id="rvView">
+	                <div class="form-group col-xs-6 col-md-6">
+	                  <label for="name" class="control-label">RunTime Variable Name
+	                  </label>
+	                  <input  type="text" class="form-control" value={{headerData.mdlName}} readonly="readonly" disabled="disabled">
+	                </div>
+	                <div class="form-group col-xs-6 col-md-6">
+	                  <label for="name" class="control-label">Validation Id
+	                  </label>
+	                  <input  type="text" class="form-control" value={{headerData.validationId}} readonly="readonly" disabled="disabled">
+	                </div>
+	                <div class="form-group col-xs-6 col-md-6">
+	                  <label for="name" class="control-label">Description
+	                  </label>
+	                 <textarea class="form-control" readonly="readonly" disabled="disabled">{{headerData.description}}</textarea>
+	                </div>
+	                <div class="form-group col-xs-6 col-md-6">
+	                  <label for="name" class="control-label">Notes
+	                  </label>
+	                  <textarea class="form-control" readonly="readonly" disabled="disabled">{{headerData.notes}}</textarea>
+	                </div>
+	              </div>
+	            </div>
+			</p-panel>
+			<p-panel header="Equation" [toggleable]="true">
+            	<div class="row" style="margin:0px">
+		            <div class="col-md-12" id="equation">	              
+		              <textarea class="form-control" rows="15" readonly="readonly" disabled="disabled">{{rvEquation}}</textarea>
+					 </div>
+	            </div>
+            </p-panel>
+            <p-panel header="Runtime Variable Values" [toggleable]="true">
+            	<div class="" style="overflow-x: scroll">
+            		<div style="width: 750%">
+            		<p-dataTable [value]="rvDataArr">
+	                		<p-column header="Model Name" field="derivedDataName"></p-column>
+			                <p-column header="Type" field="originalAdjFlag"></p-column>
+			                <p-column header="Scenario" field="scenarioName"></p-column>
+			                <p-column header="Ccycode" field="ccyCode"></p-column>
+			                 <p-column *ngFor="let colB of tpColsForRVBZero" [header]="colB.header" [field] = "colB.field"></p-column>
+			                 <p-column *ngFor="let colA of tpColsForRVAZero" [header]="colA.header" [field] = "colA.field"></p-column>
+	                	</p-dataTable>
+	                	</div>
+	               </div>
+            </p-panel>
+		</div>
+		<div *ngIf="rangeView">
+			<p-panel header="Header Info - Range Setup" [toggleable]="true">
+				<div class="row">
+	              <div class="col-md-12" id="rvView">
+	                <div class="form-group col-xs-6 col-md-6">
+	                  <label for="name" class="control-label">RunTime Variable Name
+	                  </label>
+	                  <input  type="text" class="form-control" value={{headerData.mdlName}} readonly="readonly" disabled="disabled">
+	                </div>
+	                <div class="form-group col-xs-6 col-md-6">
+	                  <label for="name" class="control-label">Validation Id
+	                  </label>
+	                  <input  type="text" class="form-control" value={{headerData.validationId}} readonly="readonly" disabled="disabled">
+	                </div>
+	                <div class="form-group col-xs-6 col-md-6">
+	                  <label for="name" class="control-label">Description
+	                  </label>
+	                 <textarea class="form-control" rows="3" readonly="readonly" disabled="disabled">{{headerData.description}}</textarea>
+	                </div>
+	                <div class="form-group col-xs-6 col-md-6">
+	                  <label for="name" class="control-label">Notes
+	                  </label>
+	                  <textarea class="form-control" rows="3" readonly="readonly" disabled="disabled">{{headerData.notes}}</textarea>
+	                </div>
+	                <div class="form-group col-xs-6 col-md-6">
+	                  <label for="name" class="control-label">Driver
+	                  </label>
+	                  <input  type="text" class="form-control" value={{rangeViewData.driver}} readonly="readonly" disabled="disabled">
+	                </div>
+	                <div class="form-group col-xs-6 col-md-6">
+	                  <label for="name" class="control-label">{{rangeViewData.fieldLabel}}
+	                  </label>
+	                  <input  type="text" class="form-control" value={{rangeViewData.fieldValue}} readonly="readonly" disabled="disabled">
+	                </div>
+	                <div class="form-group col-xs-12 col-md-12">
+	                  <label for="name" class="control-label">Equation
+	                  </label>
+	                  <textarea class="form-control" rows="6" readonly="readonly" disabled="disabled">{{rangeViewData.equation1}}</textarea>
+	                </div>
+	                <div class="form-group col-xs-6 col-md-6">
+	                  <label for="name" class="control-label">Trend
+	                  </label>
+	                  <input  type="text" class="form-control" value={{rangeViewData.trend}} readonly="readonly" disabled="disabled">
+	                </div>
+	                <div class="form-group col-xs-6 col-md-6">
+	                  <label for="name" class="control-label">Derived Variable
+	                  </label>
+	                  <input  type="text" class="form-control" value={{rangeViewData.dv}} readonly="readonly" disabled="disabled">
+	                </div>
+	                <div class="form-group col-xs-12 col-md-12">
+	                  <label for="name" class="control-label">Equation
+	                  </label>
+	                  <textarea class="form-control" rows="6" readonly="readonly" disabled="disabled">{{rangeViewData.equation2}}</textarea>
+	                </div>
+	                <div class="form-group col-xs-12 col-md-12">
+	                	<p-dataTable [value]="rangeViewArr">
+	                		<p-column header="MIN" field="minValue"></p-column>
+			                <p-column header="" field="minOperator"></p-column>
+			                <p-column header="Driver" field="driver"></p-column>
+			                <p-column header="" field="maxOperator"></p-column>
+			                <p-column header="Max" field="maxValue"></p-column>
+			                <p-column header="Trend Down" field="trendDown"></p-column>
+			                <p-column header="Trend Up" field="trendUp"></p-column>
+	                	</p-dataTable>
+	                </div>
+	              </div>
+	            </div>
+			</p-panel>
+		</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="my-container">
+	<ngx-loading [show]="loadingModelDef" [config]="{ backdropBorderRadius: '14px' }"></ngx-loading>
+</div>
