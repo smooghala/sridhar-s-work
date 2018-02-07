@@ -1,0 +1,59 @@
+<div>
+  <div class="tab-content">
+    <div class="tab-pane fade active in" id="nav-pills-tab-4" style="height: 584px; overflow-y: scroll;border: 1px solid #e6d5d5">
+      <div style="width: 100%;">
+        <div class="row" style="float: left; width: 30%">
+          <div class="col-md-12">
+            <p-dataTable [value]="lTreeDataa">
+              <p-column [style]="{'width':'40%'}" field="desc" header="Description">
+              </p-column>
+
+              <p-column header="Adjusted" [style]="{'width':'10%'}">
+                <ng-template let-col let-node="rowData" pTemplate="body">
+                  <span *ngIf="node.forecastData!=null">
+
+                    <p *ngIf="node.forecastData.B!=null" style="font-size: 11px; line-height: 23px; font-weight: bold;">
+                      <i class="fa fa-bar-chart" aria-hidden="true"></i> Balance
+                    </p>
+                    <p *ngIf="node.forecastData.R!=null" style="font-size: 11px; line-height: 23px; font-weight: bold;">
+                      Rate</p>
+                    <p *ngIf="node.forecastData.RE!=null" style="font-size: 11px; line-height: 23px; font-weight: bold;">
+                      Rev/(Exp)</p>
+
+                  </span>
+                </ng-template>
+              </p-column>
+              <p-column *ngFor="let i of totalCols; let i = index" header="{{i.label}}" [style]="{'width':'10%'}">
+                <ng-template let-col let-node="rowData" pTemplate="body">
+                  <span *ngIf="node.forecastData!=null">
+                    <p *ngIf="node.forecastData.B!=null" style="font-size: 11px; line-height: 23px;">
+
+                      <span *ngIf="node.forecastData.B[i.index]<0">
+                        <span class="redRow">(0)</span>
+                      </span>
+                      <span *ngIf="node.forecastData.B[i.index]>0">{{node.forecastData.B[i.index] | number:'.2'}}</span>
+                    </p>
+                    <p *ngIf="node.forecastData.R!=null" style="font-size: 11px; line-height: 23px;">
+
+                      <span *ngIf="node.forecastData.R[i.index]<0">
+                        <span class="redRow">({{node.forecastData.R[i.index]}})</span>
+                      </span>
+                      <span *ngIf="node.forecastData.R[i.index]>0">{{node.forecastData.R[i.index] | number:'1.1-2'}} %</span>
+
+                    </p>
+                    <p *ngIf="node.forecastData.RE!=null" style="font-size: 11px; line-height: 23px;">
+
+                      <span *ngIf="node.forecastData.RE[i.index]<0">
+                        <span class="redRow">({{node.forecastData.RE[i.index] | number:'1.1-2' | minusSignToParens }})</span>
+                      </span>
+                      <span *ngIf="node.forecastData.RE[i.index]>0">{{node.forecastData.RE[i.index] | number:'.2'}}</span>
+                  </span>
+                </ng-template>
+              </p-column>
+            </p-dataTable>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

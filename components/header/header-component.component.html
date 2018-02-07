@@ -1,0 +1,66 @@
+<nav class="navbar navbar-inverse navCss">
+	<div class="container-fluid">
+
+		<ul class="nav navbar-nav">
+			<li>
+				<a href="#" class="navIcon">
+					<i class="fa fa-home" aria-hidden="true"></i>
+				</a>
+			</li>
+			<li class="navBrand">
+				<span _ngcontent-c2="" class="" style="margin-left: 10px;">Ruby UI
+				</span>
+			</li>
+			<li class="navIcon" style="margin-top: 8px; margin-left: 16px;">
+				<div aria-label="Basic example" class="btn-group " role="group" style="margin-top: 0px; background: #2c3e5f1f;">
+					<button class="btn btn-info" type="button" style="background: #2c3e5f1f;">
+						<i aria-hidden="true" class="fa fa-window-restore"></i>
+					</button>
+					<button class="btn btn-info" type="button" style="background: #2c3e5f1f;">
+						<i aria-hidden="true" class="fa fa-star-o"></i>
+					</button>
+					<button class="btn btn-info" type="button" style="background: #2c3e5f1f;">
+						<i aria-hidden="true" class="fa fa-times"></i>
+					</button>
+				</div>
+			</li>
+
+		</ul>
+
+
+
+		<ul class="nav navbar-nav navbar-right">
+			<li>
+				<div class="dropdown">
+					<button class="btn btn-default  dropdown-toggle " data-toggle="dropdown" style="margin-right: 34px; margin-top: 11px; background: #2c3e5f1f;"
+					 type="button">
+						<a href="#" style="color: white">
+							<i aria-hidden="true" class="fa fa-lock"></i> Doe, John</a>
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+
+						<li *ngFor="let i of tempval let i = index">{{i.text}}</li>
+
+					</ul>
+				</div>
+			</li>
+			<li>
+				<div class="dropdown">
+					<button class="btn btn-default  dropdown-toggle " data-toggle="dropdown" style="margin-right: 34px; margin-top: 11px; background: #2c3e5f1f;"
+					 type="button">
+						<a href="#" style="color: white">
+							<i aria-hidden="true" class="fa fa-bell"></i>
+							<sub>0</sub>
+						</a>
+					</button>
+					<ul class="dropdown-menu">
+
+						<li></li>
+
+					</ul>
+				</div>
+			</li>
+		</ul>
+	</div>
+</nav>

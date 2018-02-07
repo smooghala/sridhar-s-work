@@ -1,0 +1,177 @@
+<nav class="navbar navbar-default additionalFilter">
+	<div class="container-fluid">
+
+		<ul class="nav navbar-nav {{ulOverflow}}" style="position: relative;">
+			<li>
+				<a href="#">
+					<dl>
+						<dt>
+							<i aria-hidden="true" class="fa fa-filter"></i> Filter
+						</dt>
+
+					</dl>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<dl>
+						<dt>Scenario</dt>
+						<dd>{{lFilterData.scenario.label}}</dd>
+					</dl>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<dl>
+						<dt>Model Output/Adjmts</dt>
+						<dd>{{lFilterData.modelop.label}}</dd>
+					</dl>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<dl>
+						<dt>Goc</dt>
+
+					</dl>
+				</a>
+			</li>
+			<li style="width:120px">
+				<a href="#">
+					<dl>
+						<dt>Managed Geography</dt>
+						<dd>{{lFilterData.managed_geo.label}}</dd>
+					</dl>
+				</a>
+			</li>
+			<li style="width:136px">
+				<a href="#">
+					<dl>
+						<dt>Managed Segment</dt>
+						<dd>{{lFilterData.managed_seg.label}}</dd>
+					</dl>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<dl>
+						<dt>Legal Entity</dt>
+						<dd>{{lFilterData.legal_entity.label}}</dd>
+					</dl>
+				</a>
+			</li>
+
+			<li style="width:80px">
+				<a href="#">
+					<dl>
+						<dt>OOS</dt>
+						<dd>{{lFilterData.oos.label}}</dd>
+					</dl>
+				</a>
+			</li>
+			<li style="width:80px">
+				<a href="#">
+					<dl>
+						<dt>Account</dt>
+						<dd>{{lFilterData.account.label}}</dd>
+					</dl>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<dl>
+						<dt>Affliate</dt>
+						<dd>{{lFilterData.affliate.label}}</dd>
+					</dl>
+				</a>
+			</li>
+			<li>
+				<a href="#">
+					<dl>
+						<dt>Forecast Portfolio</dt>
+						<dd>{{lFilterData.fp.label}}</dd>
+					</dl>
+				</a>
+			</li>
+			<li *ngIf="showLiMenus">
+				<a href="#">
+					<dl>
+						<dt>Simple Type</dt>
+						<dd>{{lFilterData.simtype.label}}</dd>
+					</dl>
+				</a>
+			</li>
+			<li *ngIf="showLiMenus">
+				<a href="#">
+					<dl>
+						<dt>Average</dt>
+						<dd>{{lFilterData.eop}}</dd>
+					</dl>
+				</a>
+			</li>
+			<li *ngIf="showLiMenus">
+				<a href="#">
+					<dl>
+						<dt>Txn CCY</dt>
+						<dd><span *ngFor="let item of lFilterData.txn let i = index">{{item.id}}<span *ngIf="i!=lFilterData.txn.length-1">, </span></span></dd>
+					</dl>
+				</a>
+			</li>
+			<li *ngIf="showLiMenus">
+				<a href="#">
+					<dl>
+						<dt>Display CCY</dt>
+						<dd>{{lFilterData.displayccy}}</dd>
+					</dl>
+				</a>
+			</li>
+			<li *ngIf="showLiMenus">
+				<a href="#">
+					<dl>
+						<dt>Scale</dt>
+						<dd>{{lFilterData.scale.label}}</dd>
+					</dl>
+				</a>
+			</li>
+			<li *ngIf="showLiMenus">
+				<a href="#">
+					<dl>
+						<dt>Display</dt>
+						<dd>
+							<span *ngFor="let item of lFilterData.display.key let i = index">{{item.label}}<span *ngIf="i!=lFilterData.display.key.length-1">, </span></span>
+						</dd>
+					</dl>
+				</a>
+			</li>
+
+			<li *ngIf="showLiMenus">
+				<a href="#">
+					<dl>
+						<dt>Show TP</dt>
+						<dd>{{lFilterData.showTp}}</dd>
+					</dl>
+				</a>
+			</li>
+
+
+
+
+
+
+
+			<li *ngIf="showMorebtn" class="moreLess">
+				<button class="btn btn-warning showmore" type="button" (click)="showMore()">
+					+7
+					<i aria-hidden="true" class="fa fa-arrow-circle-o-right"></i>
+				</button>
+			</li>
+			<li *ngIf="showLessbtn" class="moreLess">
+				<button class="btn btn-warning showmore" type="button" (click)="showless()">
+					<i class="fa fa-arrow-left" aria-hidden="true"></i>
+				</button>
+			</li>
+
+
+		</ul>
+	</div>
+</nav>

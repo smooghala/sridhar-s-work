@@ -1,0 +1,59 @@
+<div class="form-group col-xs-10 col-md-10">
+	<label for="name" class="control-label  {{disabledClr}}">Managed Segment
+	</label>
+	<div class="search-wrapper">
+
+		<input type="text" [disabled]="lForecastFilter.common_radio!='ms'" class="form-control" [(ngModel)]="lForecastFilter.managed_seg.label"
+		 [ngModelOptions]="{standalone: true}" placeholder="Managed Segment" required>
+		<button class="close-icon" (click)="eraseMe('managed_seg')"></button>
+
+	</div>
+
+</div>
+<div class="form-group col-xs-2 col-md-2 lovIcon">
+	<span class="input-group-addon rubylov {{disableLov}}" (click)="loadTreePopup('Managed Segment')">
+		<i class="glyphicon glyphicon-search"></i>
+	</span>
+</div>
+<div *ngIf="dynamic_modal_title=='Managed Segment'" class="col-md-12 popOverDiv animated fadeIn">
+	<div class="col-md-7">
+		<span class="pull-left treepanelPop">
+			<p-tree [value]="lSegmentData" (onNodeExpand)="nodeExpand($event,'MS')" [style]="{'overflow':'auto'}" selectionMode="single"
+			 [(selection)]="selectedFile" (onNodeSelect)="nodeSelect($event,'MS')"></p-tree>
+		</span>
+	</div>
+	<div class="col-md-5">
+		<span class="pull-right" style="width: 106%;">
+
+			<div class="input-group">
+				<input type="text" class="form-control" [(ngModel)]="treeSearch" placeholder="Search" (keyup)="doSearchTree()">
+				<div class="input-group-btn">
+					<button class="btn btn-default" (click)="clear()">
+						<i class="glyphicon glyphicon-remove"></i>
+					</button>
+				</div>
+			</div>
+
+			<div class="panel panel-primary">
+				<div class="panel-heading searchResult">SEARCH RESULTS</div>
+				<div class="panel-body" style="height: 273px;overflow-y:scroll;">
+
+					<div *ngIf="lTempData.data!=null" class="list-group" styel="font-size: 11px;width: 51%;">
+
+						<p-dataTable [value]="lTempData.data" (onRowDblclick)="selectSeg($event)" rowGroupMode="subheader" groupField="level" expandableRowGroups="true">
+
+							<ng-template pTemplate="rowgroupheader" let-rowData>{{rowData['level']}}</ng-template>
+							<p-column field="node" header="Desc"></p-column>
+
+						</p-dataTable>
+						<!-- <a *ngFor="let item of results let i=index" (click)="setModal(item)" class="list-group-item">{{item.desc}}</a> -->
+					</div>
+				</div>
+
+
+
+			</div>
+
+		</span>
+	</div>
+</div>

@@ -1,0 +1,30 @@
+.dropdown-tree {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+  }
+  .dropdown-tree ngx-dropdown-treeview .dropdown[ngxdropdown] button[ngxdropdowntoggle] {
+    margin-right: 0;
+    border-color: #ccc;
+    box-shadow: none;
+  }
+  .dropdown-tree ngx-dropdown-treeview .dropdown[ngxdropdown] button[ngxdropdowntoggle]:hover, .dropdown-tree ngx-dropdown-treeview .dropdown[ngxdropdown] button[ngxdropdowntoggle]:active {
+    background: white;
+    border-color: #0084ff;
+    color: #333;
+  }
+  .dropdown-tree ngx-dropdown-treeview .dropdown[ngxdropdown] button[ngxdropdowntoggle]:hover:after, .dropdown-tree ngx-dropdown-treeview .dropdown[ngxdropdown] button[ngxdropdowntoggle]:active:after {
+    border-top-color: #0084ff;
+  }
+  .dropdown-tree ngx-dropdown-treeview .dropdown[ngxdropdown].show button[ngxdropdowntoggle] {
+    background: white;
+    border-color: #0084ff;
+    box-shadow: none;
+  }
+  .dropdown-tree ngx-dropdown-treeview .dropdown[ngxdropdown].show button[ngxdropdowntoggle]:after {
+    border-top-color: #0084ff;
+  }
+  .dropdown-tree ngx-dropdown-treeview .dropdown-menu.show {
+    width: 100%;
+  }
+  
