@@ -1,0 +1,24 @@
+:host /deep/ {
+    .treeview-header {
+        .row-filter {
+            margin-bottom: .5rem;
+        }
+    }
+    .treeview-container {
+        .fa {
+            width: .8rem;
+            cursor: pointer;
+        }
+    }
+}
+
+.treeview-container {
+    overflow-x: hidden;
+    overflow-y: auto;
+    padding-right: 18px;
+}
+
+.treeview-text {
+    padding: .3rem 0;
+    white-space: nowrap;
+}
